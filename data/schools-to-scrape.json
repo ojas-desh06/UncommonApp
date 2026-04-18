@@ -1,0 +1,12 @@
+[
+  { "slug": "mit", "name": "MIT", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/MIT-admission-requirements" },
+  { "slug": "stanford", "name": "Stanford", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/Stanford-University-admission-requirements" },
+  { "slug": "harvard", "name": "Harvard", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/Harvard-admission-requirements" },
+  { "slug": "uc-berkeley", "name": "UC Berkeley", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/UC-Berkeley-admission-requirements" },
+  { "slug": "umich", "name": "Michigan", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/University-of-Michigan-admission-requirements" },
+  { "slug": "gatech", "name": "Georgia Tech", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/Georgia-Institute-of-Technology-admission-requirements" },
+  { "slug": "williams", "name": "Williams", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/Williams-College-admission-requirements" },
+  { "slug": "ut-austin", "name": "UT Austin", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/University-of-Texas-at-Austin-admission-requirements" },
+  { "slug": "ohio-state", "name": "Ohio State", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/Ohio-State-University-admission-requirements" },
+  { "slug": "asu", "name": "Arizona State", "prepscholar_url": "https://www.prepscholar.com/sat/s/colleges/Arizona-State-University-admission-requirements" }
+]

@@ -1,0 +1,82 @@
+{
+  "mit": {
+    "gpa": 4.19,
+    "source": "https://www.prepscholar.com/sat/s/colleges/MIT-admission-requirements",
+    "pattern": "primary",
+    "estimated": true,
+    "snippet": "average GPA at MIT is 4.19",
+    "scraped_at": "2026-04-18T21:11:08.427Z"
+  },
+  "stanford": {
+    "gpa": 3.94,
+    "source": "https://www.prepscholar.com/sat/s/colleges/Stanford-University-admission-requirements",
+    "pattern": "primary",
+    "estimated": false,
+    "snippet": "average GPA at Stanford is 3.94",
+    "scraped_at": "2026-04-18T21:11:09.492Z"
+  },
+  "harvard": {
+    "gpa": 4.2,
+    "source": "https://www.prepscholar.com/sat/s/colleges/Harvard-admission-requirements",
+    "pattern": "primary",
+    "estimated": false,
+    "snippet": "average GPA at Harvard is 4.2",
+    "scraped_at": "2026-04-18T21:11:10.394Z"
+  },
+  "uc-berkeley": {
+    "gpa": 3.9,
+    "source": "https://www.prepscholar.com/sat/s/colleges/UC-Berkeley-admission-requirements",
+    "pattern": "primary",
+    "estimated": false,
+    "snippet": "average GPA at UC Berkeley is 3.9",
+    "scraped_at": "2026-04-18T21:11:11.169Z"
+  },
+  "umich": {
+    "gpa": 3.9,
+    "source": "https://www.prepscholar.com/sat/s/colleges/University-of-Michigan-admission-requirements",
+    "pattern": "primary",
+    "estimated": false,
+    "snippet": "average GPA at University of Michigan is 3.9",
+    "scraped_at": "2026-04-18T21:11:12.094Z"
+  },
+  "gatech": {
+    "gpa": 4.14,
+    "source": "https://www.prepscholar.com/sat/s/colleges/Georgia-Institute-of-Technology-admission-requirements",
+    "pattern": "primary",
+    "estimated": false,
+    "snippet": "average GPA at Georgia Tech is 4.14",
+    "scraped_at": "2026-04-18T21:11:13.063Z"
+  },
+  "williams": {
+    "gpa": 4.13,
+    "source": "https://www.prepscholar.com/sat/s/colleges/Williams-College-admission-requirements",
+    "pattern": "primary",
+    "estimated": true,
+    "snippet": "average GPA at Williams College is 4.13",
+    "scraped_at": "2026-04-18T21:11:13.846Z"
+  },
+  "ut-austin": {
+    "gpa": 3.83,
+    "source": "https://www.prepscholar.com/sat/s/colleges/University-of-Texas-at-Austin-admission-requirements",
+    "pattern": "primary",
+    "estimated": true,
+    "snippet": "average GPA at UT Austin is 3.83",
+    "scraped_at": "2026-04-18T21:11:14.589Z"
+  },
+  "ohio-state": {
+    "gpa": 3.84,
+    "source": "https://www.prepscholar.com/sat/s/colleges/Ohio-State-University-admission-requirements",
+    "pattern": "primary",
+    "estimated": true,
+    "snippet": "average GPA at Ohio State University is 3.84",
+    "scraped_at": "2026-04-18T21:11:15.319Z"
+  },
+  "asu": {
+    "gpa": 3.53,
+    "source": "https://www.prepscholar.com/sat/s/colleges/Arizona-State-University-admission-requirements",
+    "pattern": "primary",
+    "estimated": false,
+    "snippet": "average GPA at ASU is 3.53",
+    "scraped_at": "2026-04-18T21:11:16.040Z"
+  }
+}

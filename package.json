@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "scrape:gpa": "node scripts/scrape-gpa.mjs",
+    "fetch:scorecard": "node scripts/fetch-scorecard.mjs",
+    "ingest:scorecard": "node scripts/ingest-scorecard.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
