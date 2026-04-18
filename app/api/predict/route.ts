@@ -4,7 +4,7 @@ import {
   studentProfileSchema,
   type PredictResponse,
 } from "@/lib/types";
-import { generateMockPrediction } from "@/lib/mock-prediction";
+import { generatePrediction } from "@/lib/prediction";
 import { savePrediction } from "@/lib/prediction-cache";
 import { analyzeEssay } from "@/lib/essay-analysis";
 
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   const essayScores = await analyzeEssay(parsed.data.essay, pdfBase64);
 
   const id = crypto.randomUUID();
-  const prediction = generateMockPrediction(id, parsed.data, essayScores);
+  const prediction = await generatePrediction(id, parsed.data, essayScores);
   savePrediction(prediction);
 
   const response: PredictResponse = predictResponseSchema.parse({
