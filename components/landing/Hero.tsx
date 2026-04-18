@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Hero() {
   return (
-    <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center px-6 py-16 lg:py-0">
+    <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-7xl flex-col px-6 py-16 lg:py-0">
+      <div className="flex justify-end pt-4 lg:pt-8">
+        <ThemeToggle />
+      </div>
+      <div className="flex flex-1 items-center">
       {/* Background glows */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="animate-pulse-glow absolute -top-20 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/12 blur-[120px]" />
@@ -87,6 +92,7 @@ export function Hero() {
             <ArrowRight className="relative size-4 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-[var(--target)]" />
           </Link>
         </div>
+      </div>
       </div>
     </section>
   );
