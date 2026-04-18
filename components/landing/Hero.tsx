@@ -1,57 +1,92 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-5xl flex-col items-center justify-center px-6 text-center">
-      {/* Radial glow behind headline */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
-      >
-        <div className="h-[480px] w-[680px] rounded-full bg-primary/10 blur-[120px]" />
+    <section className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center px-6 py-16 lg:py-0">
+      {/* Background glows */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="animate-pulse-glow absolute -top-20 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/12 blur-[120px]" />
+        <div className="animate-pulse-glow absolute bottom-0 right-1/4 h-[350px] w-[350px] rounded-full bg-[oklch(0.80_0.20_232)]/8 blur-[100px]" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-1/2 left-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[80px]" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center">
-        <Link
-          href="/apply"
-          className="mb-5 inline-flex items-center rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium tracking-widest text-muted-foreground uppercase transition-colors hover:border-primary/50 hover:text-foreground"
-        >
-          Verdict
-        </Link>
+      <div className="relative z-10 flex w-full flex-col gap-16 lg:flex-row lg:items-center lg:gap-24">
+        {/* Left: copy */}
+        <div className="flex flex-col lg:flex-1">
+          <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1">
+            <span className="size-1.5 rounded-full bg-primary animate-pulse-glow" />
+            <span className="text-xs font-medium tracking-widest text-primary uppercase">
+              Verdict
+            </span>
+          </div>
 
-        <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-[5rem]">
-          Honest college
-          <br />
-          admissions predictions.
-        </h1>
+          <h1 className="font-serif text-5xl leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.5rem]">
+            <span className="text-foreground">Honest college</span>
+            <br />
+            <span className="text-gradient">admissions</span>
+            <br />
+            <span className="text-foreground/80">predictions.</span>
+          </h1>
 
-        <p className="mt-7 max-w-lg text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-          A simulated admissions committee across 150+ US colleges. Explainable,
-          research-grounded reads on your chances — not a Reddit thread.
-        </p>
+          <p className="mt-7 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
+            A simulated admissions committee across{" "}
+            <span className="text-foreground font-medium">150+ US colleges</span>.
+            Explainable, research-grounded reads on your chances — not a Reddit thread.
+          </p>
 
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-          <Link
-            href="/apply"
-            className={cn(buttonVariants({ size: "lg" }), "group gap-2 px-7 btn-shimmer")}
-          >
-            Get your verdict
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-          <a
-            href="#how-it-works"
-            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline transition-colors"
-          >
-            See how it works
-          </a>
+          <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-[var(--safety)]" />
+              Free
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-[var(--target)]" />
+              5-minute profile
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-[var(--reach)]" />
+              No account required
+            </span>
+          </div>
         </div>
 
-        <p className="mt-7 text-xs text-muted-foreground/60 tracking-wide">
-          Free · 5-minute profile · No account required
-        </p>
+        {/* Right: path cards */}
+        <div className="flex flex-col gap-4 lg:w-80">
+          <Link
+            href="/apply?path=recent"
+            className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all duration-200 hover:border-[var(--safety)]/50 hover:shadow-[0_0_30px_-8px_var(--safety)]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--safety)]/0 to-[var(--safety)]/0 transition-all duration-300 group-hover:from-[var(--safety)]/5 group-hover:to-transparent" />
+            <span className="relative text-xs uppercase tracking-[0.15em] text-[var(--safety)]">
+              Traditional
+            </span>
+            <div className="relative">
+              <p className="font-serif text-xl text-foreground">Recent Graduate</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                Currently in high school or graduated within the last two years.
+              </p>
+            </div>
+            <ArrowRight className="relative size-4 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-[var(--safety)]" />
+          </Link>
+
+          <Link
+            href="/apply?path=returning"
+            className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all duration-200 hover:border-[var(--target)]/50 hover:shadow-[0_0_30px_-8px_var(--target)]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--target)]/0 to-[var(--target)]/0 transition-all duration-300 group-hover:from-[var(--target)]/5 group-hover:to-transparent" />
+            <span className="relative text-xs uppercase tracking-[0.15em] text-[var(--target)]">
+              Non-traditional
+            </span>
+            <div className="relative">
+              <p className="font-serif text-xl text-foreground">Adult Learner</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                Graduated years ago and ready to start or return to undergrad.
+              </p>
+            </div>
+            <ArrowRight className="relative size-4 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-[var(--target)]" />
+          </Link>
+        </div>
       </div>
     </section>
   );

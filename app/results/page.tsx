@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getPrediction } from "@/lib/prediction-cache";
 import { ResultsView } from "@/components/results/ResultsView";
+import type { Prediction } from "@/lib/types";
 
 export const metadata = {
   title: "Your verdict — Verdict",
@@ -22,7 +23,7 @@ export default async function ResultsPage({
 
   return (
     <main className="flex flex-1 flex-col">
-      <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:py-16">
+      <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:py-16">
         <header className="mb-10 flex items-baseline justify-between">
           <Link
             href="/"
@@ -42,18 +43,21 @@ export default async function ResultsPage({
           <SessionExpired />
         ) : (
           <>
-            <section className="mb-10 max-w-3xl">
-              <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                Verdict
+            <section className="mb-10 max-w-4xl">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="size-1.5 rounded-full bg-primary animate-pulse-glow" />
+                <div className="text-xs uppercase tracking-[0.18em] text-primary font-medium">
+                  Your Verdict
+                </div>
               </div>
-              <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h1 className="font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                 {prediction.headline}
               </h1>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Click any school on the map or in the list for the full read.
+              <p className="mt-4 text-sm text-muted-foreground">
+                Click any school on the map or in the list for the full breakdown.
               </p>
             </section>
-            <ResultsView prediction={prediction} />
+            <ResultsView prediction={prediction as Prediction} />
           </>
         )}
       </div>
