@@ -6,6 +6,7 @@ export type EssayScores = {
   specificity: number;
   narrative: number;
   summary: string;
+  tips: string[];
 };
 
 const SYSTEM_PROMPT = `You are an experienced college admissions counselor with 20+ years reviewing personal statements at selective US universities.
@@ -16,8 +17,10 @@ Evaluate the essay on four dimensions (1–10 each):
 - specificity: Concrete details and scenes vs. vague generalities
 - narrative: Clear arc, compelling structure, goes somewhere
 
+Also provide exactly 3 specific, actionable tips to improve this particular essay. Each tip should be 1–2 sentences, concrete, and reference something actually in the essay.
+
 Return ONLY a valid JSON object with no other text:
-{"overall": N, "authenticity": N, "specificity": N, "narrative": N, "summary": "one sentence on the essay's key strength or most important weakness"}`;
+{"overall": N, "authenticity": N, "specificity": N, "narrative": N, "summary": "one sentence on the essay's key strength or most important weakness", "tips": ["tip1", "tip2", "tip3"]}`;
 
 let _client: Anthropic | null = null;
 function getClient(): Anthropic {
@@ -49,8 +52,8 @@ export async function analyzeEssay(
       : [{ type: "text", text: `Essay:\n\n${essayText}` }];
 
     const response = await getClient().messages.create({
-      model: "claude-haiku-4-5",
-      max_tokens: 256,
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 512,
       system: [
         {
           type: "text",
@@ -61,9 +64,11 @@ export async function analyzeEssay(
       messages: [{ role: "user", content: userContent }],
     });
 
-    const text = response.content[0].type === "text" ? response.content[0].text.trim() : "";
+    let text = response.content[0].type === "text" ? response.content[0].text.trim() : "";
+    text = text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/i, "").trim();
     return JSON.parse(text) as EssayScores;
-  } catch {
+  } catch (err) {
+    console.error("[essay-analysis] error:", err);
     return null;
   }
 }

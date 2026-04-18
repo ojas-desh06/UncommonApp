@@ -186,5 +186,6 @@ export function generateMockPrediction(
     generated_at: new Date().toISOString(),
     headline: buildHeadline(student, schools),
     schools,
+    essay_feedback: essay ?? undefined,
   };
 }

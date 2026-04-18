@@ -152,12 +152,22 @@ export const schoolPredictionSchema = z.object({
 });
 export type SchoolPrediction = z.infer<typeof schoolPredictionSchema>;
 
+export const essayFeedbackSchema = z.object({
+  overall: z.number(),
+  authenticity: z.number(),
+  specificity: z.number(),
+  narrative: z.number(),
+  summary: z.string(),
+  tips: z.array(z.string()),
+}).optional();
+
 export const predictionSchema = z.object({
   id: z.string(),
   student: studentProfileSchema,
   generated_at: z.string(),
   headline: z.string(),
   schools: z.array(schoolPredictionSchema),
+  essay_feedback: essayFeedbackSchema,
 });
 export type Prediction = z.infer<typeof predictionSchema>;
 
