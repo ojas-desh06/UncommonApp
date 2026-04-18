@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code — shared config is committed, local overrides are per-developer
+.claude/settings.local.json
