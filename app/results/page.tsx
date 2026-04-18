@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { getPrediction } from "@/lib/prediction-cache";
 import { ResultsView } from "@/components/results/ResultsView";
 import type { Prediction } from "@/lib/types";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata = {
   title: "Your verdict — Verdict",
@@ -24,19 +25,22 @@ export default async function ResultsPage({
   return (
     <main className="flex flex-1 flex-col">
       <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:py-16">
-        <header className="mb-10 flex items-baseline justify-between">
+        <header className="mb-10 flex items-center justify-between">
           <Link
             href="/"
             className="font-serif text-xl tracking-tight text-foreground"
           >
             Verdict
           </Link>
-          <Link
-            href="/apply"
-            className="text-xs uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
-          >
-            Edit profile
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/apply"
+              className="text-xs uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
+            >
+              Edit profile
+            </Link>
+            <ThemeToggle />
+          </div>
         </header>
 
         {!prediction ? (

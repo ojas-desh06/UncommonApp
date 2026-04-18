@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { StudentForm } from "@/components/apply/StudentForm";
 import { AdultForm } from "@/components/apply/AdultForm";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata = {
   title: "Build your profile — Verdict",
@@ -28,13 +29,14 @@ export default async function ApplyPage({
           {/* Sidebar */}
           <aside className="hidden lg:flex lg:w-56 lg:shrink-0 lg:flex-col">
             <div className="sticky top-8 flex flex-col gap-8">
-              <div>
+              <div className="flex items-center justify-between">
                 <Link
                   href="/"
                   className="font-serif text-xl tracking-tight text-foreground"
                 >
                   Verdict
                 </Link>
+                <ThemeToggle />
               </div>
               <div>
                 <Link
