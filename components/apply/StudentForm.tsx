@@ -23,7 +23,7 @@ const DEFAULTS: StudentProfile = {
   test_type: "SAT",
   test_score: 1450,
   rigor_count: 6,
-  activities: ["", "", "", "", ""],
+  activities: ["", "", "", "", "", "", "", "", "", ""],
   awards: ["", "", ""],
   state: "CA",
   school_type: "public",
