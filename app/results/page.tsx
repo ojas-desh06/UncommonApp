@@ -4,6 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getPrediction } from "@/lib/prediction-cache";
 import { ResultsView } from "@/components/results/ResultsView";
+import { EssayFeedback } from "@/components/results/EssayFeedback";
 import type { Prediction } from "@/lib/types";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -64,6 +65,10 @@ export default async function ResultsPage({
               </p>
             </section>
             <ResultsView prediction={prediction as Prediction} />
+            <EssayFeedback
+              initialFeedback={(prediction as Prediction).essay_feedback}
+              studentEssay={(prediction as Prediction).student?.essay}
+            />
           </>
         )}
       </div>
