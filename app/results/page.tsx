@@ -49,17 +49,17 @@ export default async function ResultsPage({
           <SessionExpired />
         ) : (
           <>
-            <section className="mb-10 max-w-4xl">
-              <div className="flex items-center gap-2 mb-3">
+            <section className="mb-10 max-w-3xl">
+              <div className="flex items-center gap-2 mb-2">
                 <span className="size-1.5 rounded-full bg-primary animate-pulse-glow" />
                 <div className="text-xs uppercase tracking-[0.18em] text-primary font-medium">
                   Your Verdict
                 </div>
               </div>
-              <h1 className="font-serif text-3xl leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h1 className="font-serif text-xl leading-snug tracking-tight text-foreground sm:text-2xl">
                 {prediction.headline}
               </h1>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-2 text-sm text-muted-foreground">
                 Click any school on the map or in the list for the full breakdown.
               </p>
             </section>

@@ -157,10 +157,10 @@ function mapRows(rows: Record<string, unknown>[]): College[] {
 function pickSpread(scored: { college: College; chance: number }[]) {
   const by = (cls: Classification) => scored.filter(s => classify(s.chance) === cls);
   return [
-    ...by("safety").slice(0, 2),
-    ...by("target").slice(0, 4),
-    ...by("reach").slice(0, 3),
-    ...by("hard_reach").slice(0, 1),
+    ...by("safety").slice(0, 4),
+    ...by("target").slice(0, 7),
+    ...by("reach").slice(0, 6),
+    ...by("hard_reach").slice(0, 3),
   ];
 }
 
@@ -219,7 +219,7 @@ async function generateNarratives(
   try {
     const response = await client.messages.create({
     model: "claude-haiku-4-5",
-    max_tokens: 6000,
+    max_tokens: 8192,
     system: [
       {
         type: "text",
