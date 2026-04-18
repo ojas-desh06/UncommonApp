@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getPrediction } from "@/lib/prediction-cache";
@@ -35,8 +36,9 @@ export default async function ResultsPage({
           <div className="flex items-center gap-4">
             <Link
               href="/apply"
-              className="text-xs uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
+              className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
+              <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
               Edit profile
             </Link>
             <ThemeToggle />
