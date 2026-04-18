@@ -68,29 +68,39 @@
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
+  --background: oklch(0.13 0.008 265);
   --foreground: oklch(0.967 0.001 286.375);
-  --card: oklch(0.177 0.005 285.885);
+  --card: oklch(0.18 0.01 265);
   --card-foreground: oklch(0.967 0.001 286.375);
-  --popover: oklch(0.177 0.005 285.885);
+  --popover: oklch(0.18 0.01 265);
   --popover-foreground: oklch(0.967 0.001 286.375);
-  --primary: oklch(0.798 0.171 162.48);
-  --primary-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.82 0.22 162);
+  --primary-foreground: oklch(0.10 0.01 265);
   --secondary: oklch(0.231 0.006 286.01);
   --secondary-foreground: oklch(0.967 0.001 286.375);
-  --muted: oklch(0.231 0.006 286.01);
-  --muted-foreground: oklch(0.68 0.015 286.067);
-  --accent: oklch(0.231 0.006 286.01);
+  --muted: oklch(0.22 0.008 265);
+  --muted-foreground: oklch(0.62 0.02 265);
+  --accent: oklch(0.22 0.008 265);
   --accent-foreground: oklch(0.967 0.001 286.375);
   --destructive: oklch(0.712 0.196 13.428);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.798 0.171 162.48);
+  --border: oklch(1 0 0 / 11%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.82 0.22 162);
 
-  --safety: oklch(0.798 0.171 162.48);
-  --target: oklch(0.775 0.142 232.661);
-  --reach: oklch(0.849 0.17 85.873);
-  --hard-reach: oklch(0.745 0.19 13.42);
+  --safety: oklch(0.83 0.23 162);
+  --target: oklch(0.80 0.20 232);
+  --reach: oklch(0.87 0.22 85);
+  --hard-reach: oklch(0.78 0.26 22);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 @layer utilities {
@@ -114,6 +124,15 @@
   .btn-shimmer:hover::after {
     transform: translateX(100%);
     transition: transform 0.45s ease;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, oklch(0.97 0 0) 0%, oklch(0.83 0.23 162) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 

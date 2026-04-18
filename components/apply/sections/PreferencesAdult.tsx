@@ -12,36 +12,75 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { Field, SectionHeader } from "../Field";
-import type { Region, StudentProfile } from "@/lib/types";
+import type { AdultLearnerProfile, Region } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 
 const REGIONS: Region[] = ["Northeast", "Midwest", "South", "West", "Any"];
 
-export function PreferencesSection() {
+export function PreferencesAdultSection() {
   const {
     register,
     control,
     formState: { errors },
-  } = useFormContext<StudentProfile>();
+  } = useFormContext<AdultLearnerProfile>();
 
   return (
     <section>
       <SectionHeader
         step={5}
         title="Preferences"
-        blurb="What you're looking for — we'll weight recommendations accordingly."
+        blurb="What you need from a school — schedule, format, location, and cost."
       />
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2">
         <Field
           label="Intended major"
           htmlFor="intended_major"
           error={errors.intended_major?.message}
-          className="sm:col-span-2 lg:col-span-3"
+          className="sm:col-span-2"
         >
           <Input
             id="intended_major"
-            placeholder="Computer Science, Undecided — Humanities leaning, etc."
+            placeholder="Healthcare Administration, Computer Science, Business…"
             {...register("intended_major")}
+          />
+        </Field>
+
+        <Field label="Schedule" error={errors.schedule_preference?.message}>
+          <Controller
+            control={control}
+            name="schedule_preference"
+            render={({ field }) => (
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Pick one" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="full_time">Full-time</SelectItem>
+                  <SelectItem value="part_time">Part-time</SelectItem>
+                  <SelectItem value="either">Either works</SelectItem>
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </Field>
+
+        <Field label="Format" error={errors.format_preference?.message}>
+          <Controller
+            control={control}
+            name="format_preference"
+            render={({ field }) => (
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Pick one" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="in_person">In-person</SelectItem>
+                  <SelectItem value="online">Online</SelectItem>
+                  <SelectItem value="hybrid">Hybrid</SelectItem>
+                  <SelectItem value="any">No preference</SelectItem>
+                </SelectContent>
+              </Select>
+            )}
           />
         </Field>
 
@@ -49,7 +88,7 @@ export function PreferencesSection() {
           label="Region preference"
           error={errors.region_preference?.message}
           description="Check as many as apply. 'Any' overrides the others."
-          className="sm:col-span-2 lg:col-span-3"
+          className="sm:col-span-2"
         >
           <Controller
             control={control}

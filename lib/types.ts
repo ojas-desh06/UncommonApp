@@ -76,6 +76,7 @@ export const studentProfileSchema = z.object({
   region_preference: z.array(regionSchema).min(1),
   size_preference: sizePreferenceSchema,
   max_budget: z.number().min(0).max(120000),
+  essay: z.string().max(3500),
 }).superRefine((val, ctx) => {
   if (val.test_type === "test_optional") {
     return;
@@ -165,3 +166,56 @@ export const predictResponseSchema = z.object({
   prediction: predictionSchema,
 });
 export type PredictResponse = z.infer<typeof predictResponseSchema>;
+
+// ── Adult learner types ───────────────────────────────────────────────────────
+
+export const yearsGapSchema = z.enum(["2_5", "5_10", "10_20", "20_plus"]);
+export type YearsGap = z.infer<typeof yearsGapSchema>;
+
+export const priorCreditsSchema = z.enum(["none", "some", "substantial", "nearly_done"]);
+export type PriorCredits = z.infer<typeof priorCreditsSchema>;
+
+export const degreeGoalSchema = z.enum(["start_bachelor", "complete_bachelor", "specific_program"]);
+export type DegreeGoal = z.infer<typeof degreeGoalSchema>;
+
+export const schedulePreferenceSchema = z.enum(["full_time", "part_time", "either"]);
+export type SchedulePreference = z.infer<typeof schedulePreferenceSchema>;
+
+export const formatPreferenceSchema = z.enum(["in_person", "online", "hybrid", "any"]);
+export type FormatPreference = z.infer<typeof formatPreferenceSchema>;
+
+export const adultLearnerProfileSchema = z.object({
+  hs_gpa: z.number().min(0).max(5).nullable(),
+  years_gap: yearsGapSchema,
+  prior_credits: priorCreditsSchema,
+  years_experience: z.number().int().min(0).max(50),
+  industry: z.string().max(120),
+  work_experience: z.array(z.string().max(240)).length(3),
+  degree_goal: degreeGoalSchema,
+  motivation: z.string().min(1).max(500),
+  career_goal: z.string().max(240),
+  state: usStateSchema,
+  first_gen: z.boolean(),
+  intended_major: z.string().min(1).max(120),
+  schedule_preference: schedulePreferenceSchema,
+  format_preference: formatPreferenceSchema,
+  region_preference: z.array(regionSchema).min(1),
+  size_preference: sizePreferenceSchema,
+  max_budget: z.number().min(0).max(120000),
+});
+export type AdultLearnerProfile = z.infer<typeof adultLearnerProfileSchema>;
+
+export const adultPredictionSchema = z.object({
+  id: z.string(),
+  student: adultLearnerProfileSchema,
+  generated_at: z.string(),
+  headline: z.string(),
+  schools: z.array(schoolPredictionSchema),
+});
+export type AdultPrediction = z.infer<typeof adultPredictionSchema>;
+
+export const adultPredictResponseSchema = z.object({
+  id: z.string(),
+  prediction: adultPredictionSchema,
+});
+export type AdultPredictResponse = z.infer<typeof adultPredictResponseSchema>;
