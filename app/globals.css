@@ -93,6 +93,30 @@
   --hard-reach: oklch(0.745 0.19 13.42);
 }
 
+@layer utilities {
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      oklch(1 0 0 / 18%) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: none;
+  }
+  .btn-shimmer:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.45s ease;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
