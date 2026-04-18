@@ -5,47 +5,43 @@ import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { AcademicsSection } from "./sections/Academics";
-import { ActivitiesSection } from "./sections/Activities";
-import { AwardsSection } from "./sections/Awards";
-import { BackgroundSection } from "./sections/Background";
-import { PreferencesSection } from "./sections/Preferences";
-import { EssaySection } from "./sections/Essay";
+import { AcademicsAdultSection } from "./sections/AcademicsAdult";
+import { ExperienceSection } from "./sections/Experience";
+import { GoalsSection } from "./sections/Goals";
+import { BackgroundAdultSection } from "./sections/BackgroundAdult";
+import { PreferencesAdultSection } from "./sections/PreferencesAdult";
 import {
-  predictResponseSchema,
-  studentProfileSchema,
-  type StudentProfile,
+  adultLearnerProfileSchema,
+  adultPredictResponseSchema,
+  type AdultLearnerProfile,
 } from "@/lib/types";
 
-const DEFAULTS: StudentProfile = {
-  gpa_unweighted: 3.8,
-  gpa_weighted: 4.2,
-  test_type: "SAT",
-  test_score: 1450,
-  rigor_count: 6,
-  activities: ["", "", "", "", ""],
-  awards: ["", "", ""],
+const DEFAULTS: AdultLearnerProfile = {
+  hs_gpa: null,
+  years_gap: "5_10",
+  prior_credits: "none",
+  years_experience: 5,
+  industry: "",
+  work_experience: ["", "", ""],
+  degree_goal: "start_bachelor",
+  motivation: "",
+  career_goal: "",
   state: "CA",
-  school_type: "public",
   first_gen: false,
-  legacy: false,
-  legacy_schools: [],
-  recruited_athlete: false,
   intended_major: "",
+  schedule_preference: "either",
+  format_preference: "any",
   region_preference: ["Any"],
   size_preference: "any",
-  max_budget: 60000,
-  essay: "",
+  max_budget: 40000,
 };
 
-export function StudentForm() {
+export function AdultForm() {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [pdfBase64, setPdfBase64] = useState<string | null>(null);
-  const [pdfName, setPdfName] = useState<string | null>(null);
 
-  const form = useForm<StudentProfile>({
-    resolver: zodResolver(studentProfileSchema),
+  const form = useForm<AdultLearnerProfile>({
+    resolver: zodResolver(adultLearnerProfileSchema),
     defaultValues: DEFAULTS,
     mode: "onBlur",
   });
@@ -55,24 +51,20 @@ export function StudentForm() {
     formState: { isSubmitting },
   } = form;
 
-  const onSubmit = async (data: StudentProfile) => {
+  const onSubmit = async (data: AdultLearnerProfile) => {
     setSubmitError(null);
     try {
-      const cleaned: StudentProfile = {
-        ...data,
-        awards: data.awards.filter((a) => a.trim().length > 0),
-      };
-      const res = await fetch("/api/predict", {
+      const res = await fetch("/api/predict-adult", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...cleaned, essay_pdf_base64: pdfBase64 }),
+        body: JSON.stringify(data),
       });
       if (!res.ok) {
         const text = await res.text();
         throw new Error(text || `Request failed (${res.status})`);
       }
       const json = await res.json();
-      const parsed = predictResponseSchema.parse(json);
+      const parsed = adultPredictResponseSchema.parse(json);
       router.push(`/results?id=${parsed.id}`);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Something went wrong");
@@ -82,21 +74,15 @@ export function StudentForm() {
   return (
     <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-12">
-        <AcademicsSection />
+        <AcademicsAdultSection />
         <div className="h-px w-full bg-border" />
-        <ActivitiesSection />
+        <ExperienceSection />
         <div className="h-px w-full bg-border" />
-        <AwardsSection />
+        <GoalsSection />
         <div className="h-px w-full bg-border" />
-        <BackgroundSection />
+        <BackgroundAdultSection />
         <div className="h-px w-full bg-border" />
-        <PreferencesSection />
-        <div className="h-px w-full bg-border" />
-        <EssaySection
-          pdfName={pdfName}
-          onPdfChange={(base64, name) => { setPdfBase64(base64); setPdfName(name); }}
-          onPdfRemove={() => { setPdfBase64(null); setPdfName(null); }}
-        />
+        <PreferencesAdultSection />
 
         <div className="flex flex-col items-stretch gap-3 border-t border-border pt-8 sm:items-start">
           {submitError && (

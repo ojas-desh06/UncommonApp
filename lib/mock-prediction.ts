@@ -5,6 +5,7 @@ import type {
   SchoolPrediction,
   StudentProfile,
 } from "./types";
+import type { EssayScores } from "./essay-analysis";
 import { MOCK_COLLEGES } from "./mock-colleges";
 
 function clamp(x: number, min = 0, max = 1): number {
@@ -30,7 +31,7 @@ function classify(chance: number): Classification {
   return "hard_reach";
 }
 
-function predictOne(student: StudentProfile, college: College): SchoolPrediction {
+function predictOne(student: StudentProfile, college: College, essay: EssayScores | null): SchoolPrediction {
   let chance = college.admission_rate;
 
   const studentGpa = Math.max(student.gpa_unweighted, student.gpa_weighted - 0.5);
@@ -59,6 +60,17 @@ function predictOne(student: StudentProfile, college: College): SchoolPrediction
   }
   if (student.recruited_athlete) {
     chance *= 2.2;
+  }
+
+  if (essay != null) {
+    const essayWeight = college.cds_factors.essays;
+    if (essay.overall >= 8) {
+      if (essayWeight === "very_important") chance *= 1.2;
+      else if (essayWeight === "important") chance *= 1.1;
+    } else if (essay.overall <= 4) {
+      if (essayWeight === "very_important") chance *= 0.82;
+      else if (essayWeight === "important") chance *= 0.9;
+    }
   }
 
   chance = clamp(chance, 0.01, 0.95);
@@ -103,7 +115,17 @@ function predictOne(student: StudentProfile, college: College): SchoolPrediction
     working_for.push(`Legacy status is considered here and moves the needle at the margin.`);
   }
 
-  if (college.cds_factors.essays === "very_important") {
+  if (essay != null) {
+    const essayWeight = college.cds_factors.essays;
+    if (essay.overall >= 8 && (essayWeight === "very_important" || essayWeight === "important")) {
+      working_for.push(`Your personal statement scored ${essay.overall}/10 — ${essay.summary}`);
+    } else if (essay.overall <= 5 && essayWeight === "very_important") {
+      working_against.push(`Your essay scored ${essay.overall}/10 at a school where essays are "very important" — ${essay.summary}`);
+      what_would_help.push(`Revise your personal statement — this school reads them closely and your current draft has room to improve.`);
+    } else if (essayWeight === "very_important") {
+      working_against.push(`Essays are rated "very important" here — your statement (${essay.overall}/10) could be the deciding factor either way.`);
+    }
+  } else if (college.cds_factors.essays === "very_important") {
     working_against.push(`Essays are rated "very important" — a weak personal statement would be costly.`);
     what_would_help.push(`Invest deeply in a distinctive personal essay — this school reads them closely.`);
   }
@@ -153,8 +175,9 @@ function buildHeadline(student: StudentProfile, schools: SchoolPrediction[]): st
 export function generateMockPrediction(
   id: string,
   student: StudentProfile,
+  essay: EssayScores | null = null,
 ): Prediction {
-  const schools = MOCK_COLLEGES.map((c) => predictOne(student, c)).sort(
+  const schools = MOCK_COLLEGES.map((c) => predictOne(student, c, essay)).sort(
     (a, b) => b.chance_high - a.chance_high,
   );
   return {

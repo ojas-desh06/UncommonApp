@@ -2,7 +2,7 @@
 
 import type { SchoolPrediction } from "@/lib/types";
 import {
-  classificationBgClass,
+  classificationColorVar,
   formatChanceRange,
   formatPercent,
 } from "@/lib/utils";
@@ -16,13 +16,28 @@ export function SchoolCard({
   onClick: () => void;
 }) {
   const midpoint = (school.chance_low + school.chance_high) / 2;
+  const color = classificationColorVar[school.classification];
+
   return (
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-full items-center justify-between gap-3 rounded-lg border border-border bg-card/60 p-3 text-left transition-colors hover:border-foreground/25 hover:bg-card"
+      className="group relative flex w-full items-center justify-between gap-3 overflow-hidden rounded-lg border border-border bg-card/60 p-3 pl-4 text-left transition-all duration-150 hover:bg-card"
+      style={
+        {
+          borderLeftColor: color,
+          borderLeftWidth: "3px",
+          "--glow": color,
+        } as React.CSSProperties
+      }
     >
-      <div className="min-w-0 flex-1">
+      {/* subtle hover bg tint */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        style={{ background: `radial-gradient(ellipse at left, ${color}08 0%, transparent 70%)` }}
+      />
+
+      <div className="relative min-w-0 flex-1">
         <div className="truncate text-sm font-medium text-foreground">
           {school.college.name}
         </div>
@@ -31,13 +46,15 @@ export function SchoolCard({
           {formatChanceRange(school.chance_low, school.chance_high)}
         </div>
       </div>
-      <div className="flex items-center gap-3">
+
+      <div className="relative flex items-center gap-2">
         <span
-          className={`rounded-md border px-2 py-0.5 text-xs font-medium ${classificationBgClass[school.classification]}`}
+          className="text-sm font-semibold tabular-nums"
+          style={{ color }}
         >
           {formatPercent(midpoint)}
         </span>
-        <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+        <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" style={{ color: `${color}99` }} />
       </div>
     </button>
   );

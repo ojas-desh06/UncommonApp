@@ -31,7 +31,7 @@ export function AcademicsSection() {
         title="Academics"
         blurb="The numerical core of your transcript — the first thing any committee looks at."
       />
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <Field label="GPA (unweighted)" htmlFor="gpa_unweighted" error={errors.gpa_unweighted?.message}>
           <Input
             id="gpa_unweighted"
@@ -98,7 +98,7 @@ export function AcademicsSection() {
           htmlFor="rigor_count"
           error={errors.rigor_count?.message}
           description="Count all advanced courses across your high school career."
-          className="sm:col-span-2"
+          className="sm:col-span-2 lg:col-span-2"
         >
           <Input
             id="rigor_count"

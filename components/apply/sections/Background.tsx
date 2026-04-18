@@ -34,7 +34,7 @@ export function BackgroundSection() {
         title="Background"
         blurb="Context matters. Committees read your file against the opportunities you had."
       />
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <Field label="Home state" error={errors.state?.message}>
           <Controller
             control={control}
@@ -77,7 +77,7 @@ export function BackgroundSection() {
           />
         </Field>
 
-        <div className="sm:col-span-2 flex flex-col gap-3 rounded-lg border border-border bg-card/40 p-4">
+        <div className="sm:col-span-2 lg:col-span-3 flex flex-col gap-3 rounded-lg border border-border bg-card/40 p-4">
           <CheckboxField
             name="first_gen"
             label="First-generation college student"

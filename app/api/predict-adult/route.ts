@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 import {
-  predictResponseSchema,
-  studentProfileSchema,
-  type PredictResponse,
+  adultLearnerProfileSchema,
+  adultPredictResponseSchema,
+  type AdultPredictResponse,
 } from "@/lib/types";
-import { generateMockPrediction } from "@/lib/mock-prediction";
+import { generateMockAdultPrediction } from "@/lib/mock-adult-prediction";
 import { savePrediction } from "@/lib/prediction-cache";
-import { analyzeEssay } from "@/lib/essay-analysis";
 
 export async function POST(req: Request) {
   let json: unknown;
@@ -16,10 +15,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const body = json as Record<string, unknown>;
-  const pdfBase64 = typeof body.essay_pdf_base64 === "string" ? body.essay_pdf_base64 : null;
-
-  const parsed = studentProfileSchema.safeParse(json);
+  const parsed = adultLearnerProfileSchema.safeParse(json);
   if (!parsed.success) {
     return NextResponse.json(
       { error: "Invalid profile", issues: parsed.error.issues },
@@ -27,13 +23,11 @@ export async function POST(req: Request) {
     );
   }
 
-  const essayScores = await analyzeEssay(parsed.data.essay, pdfBase64);
-
   const id = crypto.randomUUID();
-  const prediction = generateMockPrediction(id, parsed.data, essayScores);
+  const prediction = generateMockAdultPrediction(id, parsed.data);
   savePrediction(prediction);
 
-  const response: PredictResponse = predictResponseSchema.parse({
+  const response: AdultPredictResponse = adultPredictResponseSchema.parse({
     id,
     prediction,
   });
