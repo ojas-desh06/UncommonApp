@@ -1,15 +1,22 @@
 "use client";
 
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useFieldArray } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Field, SectionHeader } from "../Field";
 import type { AdultLearnerProfile } from "@/lib/types";
+import { Plus, Trash2 } from "lucide-react";
 
 export function ExperienceSection() {
   const {
     register,
+    control,
     formState: { errors },
   } = useFormContext<AdultLearnerProfile>();
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "work_experience" as never,
+  });
 
   return (
     <section>
@@ -48,24 +55,47 @@ export function ExperienceSection() {
         </Field>
 
         <div className="flex flex-col gap-4 sm:col-span-2">
-          {[0, 1, 2].map((i) => (
-            <Field
-              key={i}
-              label={`Role ${i + 1}${i > 0 ? " (optional)" : ""}`}
-              htmlFor={`work-${i}`}
-              error={errors.work_experience?.[i]?.message}
-            >
-              <Input
-                id={`work-${i}`}
-                placeholder={
-                  i === 0
-                    ? "Registered Nurse, Memorial Hospital — 6 yrs, managed ICU team of 12"
-                    : "Job title, employer — context, scope, outcome"
-                }
-                {...register(`work_experience.${i}` as const)}
-              />
-            </Field>
+          {fields.map((field, i) => (
+            <div key={field.id} className="flex items-start gap-2">
+              <Field
+                label={`Role ${i + 1}${i > 0 ? " (optional)" : ""}`}
+                htmlFor={`work-${i}`}
+                error={errors.work_experience?.[i]?.message}
+                className="flex-1"
+              >
+                <Input
+                  id={`work-${i}`}
+                  placeholder={
+                    i === 0
+                      ? "Registered Nurse, Memorial Hospital — 6 yrs, managed ICU team of 12"
+                      : "Job title, employer — context, scope, outcome"
+                  }
+                  {...register(`work_experience.${i}` as const)}
+                />
+              </Field>
+              {fields.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => remove(i)}
+                  className="mt-7 rounded-md p-2 text-muted-foreground transition-colors hover:text-destructive"
+                  aria-label="Remove role"
+                >
+                  <Trash2 className="size-4" />
+                </button>
+              )}
+            </div>
           ))}
+
+          {fields.length < 10 && (
+            <button
+              type="button"
+              onClick={() => append("")}
+              className="flex items-center gap-2 rounded-lg border border-dashed border-border px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+            >
+              <Plus className="size-4" />
+              Add another role
+            </button>
+          )}
         </div>
       </div>
     </section>

@@ -73,6 +73,63 @@ function predictOne(student: StudentProfile, college: College, essay: EssayScore
     }
   }
 
+  // Campus fit score (0–1) — doesn't change admission odds, surfaces in UI
+  let fitPoints = 0;
+  let fitTotal = 0;
+  const fitFor: string[] = [];
+  const fitAgainst: string[] = [];
+
+  if (student.campus_setting !== "any") {
+    fitTotal++;
+    if (student.campus_setting === college.campus_setting) {
+      fitPoints++;
+      fitFor.push(`${college.campus_setting.charAt(0).toUpperCase() + college.campus_setting.slice(1)} campus — matches your setting preference.`);
+    } else {
+      fitAgainst.push(`You prefer a ${student.campus_setting} campus; this is ${college.campus_setting}.`);
+    }
+  }
+  if (student.sports_culture === "big_sports") {
+    fitTotal++;
+    if (college.sports_tier === "d1_powerhouse") { fitPoints++; fitFor.push("Major D1 sports school — exactly what you're looking for."); }
+    else if (college.sports_tier === "d1") { fitPoints += 0.5; }
+    else { fitAgainst.push("Sports culture here is less prominent than you want."); }
+  } else if (student.sports_culture === "not_important" && college.sports_tier === "d1_powerhouse") {
+    fitTotal++; fitAgainst.push("Big sports culture dominates campus life here, which you said isn't important.");
+  }
+  if (student.greek_life === "important") {
+    fitTotal++;
+    if (college.greek_life === "strong") { fitPoints++; fitFor.push("Strong Greek life with many active chapters."); }
+    else if (college.greek_life === "minimal") { fitAgainst.push("Very limited Greek presence — may not match your social priorities."); }
+    else fitPoints += 0.5;
+  } else if (student.greek_life === "not_interested") {
+    fitTotal++;
+    if (college.greek_life === "minimal") { fitPoints++; fitFor.push("Greek life is minimal here — good fit for your preference."); }
+    else if (college.greek_life === "strong") { fitAgainst.push("Greek life is prominent here, which you said you're not interested in."); }
+    else fitPoints += 0.5;
+  }
+  if (student.research === "essential") {
+    fitTotal++;
+    if (college.research_intensity === "high") { fitPoints++; fitFor.push("Strong undergraduate research program."); }
+    else { fitAgainst.push("Research opportunities here are more limited than you're looking for."); }
+  } else if (student.research === "not_important" && college.research_intensity === "high") {
+    fitTotal++; fitPoints += 0.5;
+  }
+  if (student.weather !== "any") {
+    fitTotal++;
+    if (student.weather === college.climate) { fitPoints++; fitFor.push(`${college.climate.replace("_", " ")} climate — matches your preference.`); }
+    else if ((student.weather === "warm" && college.climate === "cold") || (student.weather === "cold" && college.climate === "warm")) {
+      fitAgainst.push(`${college.climate.replace("_", " ")} climate doesn't match your ${student.weather} preference.`);
+    } else { fitPoints += 0.5; }
+  }
+  if (student.diversity === "very_important") {
+    fitTotal++;
+    if (college.diversity_rating === "high") { fitPoints++; fitFor.push("Highly diverse student body."); }
+    else if (college.diversity_rating === "low") { fitAgainst.push("Less diverse campus than you're looking for."); }
+    else fitPoints += 0.5;
+  }
+
+  const campus_fit = fitTotal > 0 ? clamp(fitPoints / fitTotal, 0, 1) : 1;
+
   chance = clamp(chance, 0.01, 0.95);
   const classification = classify(chance);
   const chance_low = clamp(chance - 0.08, 0.01, 0.95);
@@ -138,6 +195,10 @@ function predictOne(student: StudentProfile, college: College, essay: EssayScore
     what_would_help.push(`A retest adding ~${college.sat_25 - studentSat} points would move you into the middle 50%.`);
   }
 
+  // Merge campus fit notes into working_for / working_against
+  working_for.push(...fitFor);
+  working_against.push(...fitAgainst);
+
   while (working_for.length < 3) {
     working_for.push(`Your stated interest in ${student.intended_major} aligns with programs this school is known for.`);
   }
@@ -151,10 +212,11 @@ function predictOne(student: StudentProfile, college: College, essay: EssayScore
   return {
     college,
     classification,
+    campus_fit,
     chance_low,
     chance_high,
-    working_for: working_for.slice(0, 3),
-    working_against: working_against.slice(0, 3),
+    working_for: working_for.slice(0, 4),
+    working_against: working_against.slice(0, 4),
     what_would_help: what_would_help.slice(0, 2),
   };
 }

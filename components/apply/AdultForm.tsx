@@ -10,6 +10,7 @@ import { ExperienceSection } from "./sections/Experience";
 import { GoalsSection } from "./sections/Goals";
 import { BackgroundAdultSection } from "./sections/BackgroundAdult";
 import { PreferencesAdultSection } from "./sections/PreferencesAdult";
+import { CampusLifeSection } from "./sections/CampusLife";
 import {
   adultLearnerProfileSchema,
   adultPredictResponseSchema,
@@ -22,7 +23,7 @@ const DEFAULTS: AdultLearnerProfile = {
   prior_credits: "none",
   years_experience: 5,
   industry: "",
-  work_experience: ["", "", ""],
+  work_experience: [""],
   degree_goal: "start_bachelor",
   motivation: "",
   career_goal: "",
@@ -34,6 +35,12 @@ const DEFAULTS: AdultLearnerProfile = {
   region_preference: ["Any"],
   size_preference: "any",
   max_budget: 40000,
+  campus_setting: "any",
+  sports_culture: "moderate",
+  greek_life: "nice_to_have",
+  research: "nice_to_have",
+  weather: "any",
+  diversity: "somewhat",
 };
 
 export function AdultForm() {
@@ -83,6 +90,8 @@ export function AdultForm() {
         <BackgroundAdultSection />
         <div className="h-px w-full bg-border" />
         <PreferencesAdultSection />
+        <div className="h-px w-full bg-border" />
+        <CampusLifeSection step={6} />
 
         <div className="flex flex-col items-stretch gap-3 border-t border-border pt-8 sm:items-start">
           {submitError && (

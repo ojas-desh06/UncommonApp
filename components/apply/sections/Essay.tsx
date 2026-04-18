@@ -39,7 +39,7 @@ export function EssaySection({ pdfName, onPdfChange, onPdfRemove }: Props) {
   return (
     <section>
       <SectionHeader
-        step={6}
+        step={7}
         title="Personal Essay"
         blurb="Your personal statement. We'll run it through an AI admissions reader and factor the score into your chances — especially at schools where essays are rated 'very important'."
       />
