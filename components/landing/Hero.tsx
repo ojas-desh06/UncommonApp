@@ -15,9 +15,12 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
-        <span className="mb-5 inline-flex items-center rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium tracking-widest text-muted-foreground uppercase">
+        <Link
+          href="/apply"
+          className="mb-5 inline-flex items-center rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium tracking-widest text-muted-foreground uppercase transition-colors hover:border-primary/50 hover:text-foreground"
+        >
           Verdict
-        </span>
+        </Link>
 
         <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-[5rem]">
           Honest college
@@ -33,7 +36,7 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/apply"
-            className={cn(buttonVariants({ size: "lg" }), "group gap-2 px-7")}
+            className={cn(buttonVariants({ size: "lg" }), "group gap-2 px-7 btn-shimmer")}
           >
             Get your verdict
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

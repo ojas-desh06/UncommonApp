@@ -24,7 +24,7 @@ export function CTA() {
           <div className="mt-9">
             <Link
               href="/apply"
-              className={cn(buttonVariants({ size: "lg" }), "group gap-2 px-8")}
+              className={cn(buttonVariants({ size: "lg" }), "group gap-2 px-8 btn-shimmer")}
             >
               Get your verdict
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

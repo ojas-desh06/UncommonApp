@@ -54,11 +54,12 @@ export function Features() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon: Icon, title, description }) => (
-            <div
+            <button
               key={title}
-              className="rounded-xl border border-border/60 bg-card p-6 transition-colors hover:border-border"
+              type="button"
+              className="group cursor-pointer rounded-xl border border-border/60 bg-card p-6 text-left transition-colors hover:border-primary/40 hover:bg-card/80"
             >
-              <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-2.5 text-primary">
+              <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-2.5 text-primary transition-colors group-hover:bg-primary/20">
                 <Icon className="size-5" />
               </div>
               <h3 className="mb-2 font-sans text-sm font-semibold text-foreground">
@@ -67,7 +68,7 @@ export function Features() {
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {description}
               </p>
-            </div>
+            </button>
           ))}
         </div>
       </div>
