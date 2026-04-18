@@ -55,8 +55,12 @@ function toSat(student: StudentProfile): number | null {
 }
 
 function classify(chance: number): Classification {
-  if (chance >= 0.6) return "safety";
-  if (chance >= 0.3) return "target";
+  // Safety threshold raised to 0.75: the scoring cap at 0.95 flattens 100+ easy
+  // schools to a tie at the top of "safety", crowding out moderately-selective
+  // flagships (OSU, UIUC at ~0.60–0.70). Putting those into "target" lets them
+  // surface instead of being buried at rank 170+ in safety.
+  if (chance >= 0.75) return "safety";
+  if (chance >= 0.35) return "target";
   if (chance >= 0.1) return "reach";
   return "hard_reach";
 }
@@ -100,7 +104,6 @@ async function fetchColleges(student: StudentProfile): Promise<College[]> {
     for (const r of student.region_preference) {
       states.push(...(REGION_STATES[r] ?? []));
     }
-    if (!states.includes(student.state)) states.push(student.state);
   }
 
   const [minSize, maxSize] = SIZE_RANGES[student.size_preference];
@@ -157,8 +160,8 @@ function mapRows(rows: Record<string, unknown>[]): College[] {
 function pickSpread(scored: { college: College; chance: number }[]) {
   const by = (cls: Classification) => scored.filter(s => classify(s.chance) === cls);
   return [
-    ...by("safety").slice(0, 4),
-    ...by("target").slice(0, 7),
+    ...by("safety").slice(0, 6),
+    ...by("target").slice(0, 10),
     ...by("reach").slice(0, 6),
     ...by("hard_reach").slice(0, 3),
   ];
@@ -348,7 +351,15 @@ export async function generatePrediction(
 
   const scored = colleges
     .map(c => ({ college: c, chance: scoreChance(student, c, essay) }))
-    .sort((a, b) => b.chance - a.chance);
+    .sort((a, b) => {
+      // Primary: higher chance first, but treat near-ties (within 0.02) as equal
+      // so many schools don't all pile at the 0.95 cap by insertion order.
+      if (Math.abs(a.chance - b.chance) > 0.02) return b.chance - a.chance;
+      // Tiebreaker: larger school wins. Size is a decent proxy for prominence
+      // (state flagships vs. tiny unknown colleges), so students see schools
+      // they've actually heard of before obscure same-chance picks.
+      return b.college.size - a.college.size;
+    });
 
   const selected = pickSpread(scored).map(s => ({ ...s, classification: classify(s.chance) }));
 
