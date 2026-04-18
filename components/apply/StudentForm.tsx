@@ -10,6 +10,7 @@ import { ActivitiesSection } from "./sections/Activities";
 import { AwardsSection } from "./sections/Awards";
 import { BackgroundSection } from "./sections/Background";
 import { PreferencesSection } from "./sections/Preferences";
+import { CampusLifeSection } from "./sections/CampusLife";
 import { EssaySection } from "./sections/Essay";
 import {
   predictResponseSchema,
@@ -35,6 +36,12 @@ const DEFAULTS: StudentProfile = {
   region_preference: ["Any"],
   size_preference: "any",
   max_budget: 60000,
+  campus_setting: "any",
+  sports_culture: "moderate",
+  greek_life: "nice_to_have",
+  research: "nice_to_have",
+  weather: "any",
+  diversity: "somewhat",
   essay: "",
 };
 
@@ -91,6 +98,8 @@ export function StudentForm() {
         <BackgroundSection />
         <div className="h-px w-full bg-border" />
         <PreferencesSection />
+        <div className="h-px w-full bg-border" />
+        <CampusLifeSection />
         <div className="h-px w-full bg-border" />
         <EssaySection
           pdfName={pdfName}
