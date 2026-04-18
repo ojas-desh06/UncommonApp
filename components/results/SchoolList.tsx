@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import type { Classification, SchoolPrediction } from "@/lib/types";
 import { SchoolCard } from "./SchoolCard";
 import { classificationLabel } from "@/lib/utils";
@@ -48,15 +49,31 @@ export function SchoolList({
                 No {classificationLabel[g.includes[0]].toLowerCase()}s in this set.
               </p>
             ) : (
-              <div className="flex flex-col gap-2">
+              <motion.div
+                className="flex flex-col gap-2"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
+                }}
+              >
                 {items.map((s) => (
-                  <SchoolCard
+                  <motion.div
                     key={s.college.id}
-                    school={s}
-                    onClick={() => onSelect(s)}
-                  />
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+                      },
+                    }}
+                  >
+                    <SchoolCard school={s} onClick={() => onSelect(s)} />
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
           </section>
         );

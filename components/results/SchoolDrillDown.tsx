@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -14,7 +16,6 @@ import {
   classificationLabel,
   formatChanceRange,
   formatCurrency,
-  formatPercent,
 } from "@/lib/utils";
 import { Check, ChevronsUp, Mic, X } from "lucide-react";
 
@@ -71,12 +72,7 @@ export function SchoolDrillDown({
                 Estimated chance
               </div>
               <div className="flex items-baseline gap-3">
-                <span
-                  className="font-serif text-6xl font-normal leading-none"
-                  style={{ color }}
-                >
-                  {formatPercent(midpoint)}
-                </span>
+                <AnimatedPercent value={midpoint} color={color} />
                 <span className="text-sm text-muted-foreground">
                   {formatChanceRange(school.chance_low, school.chance_high)}
                 </span>
@@ -84,10 +80,12 @@ export function SchoolDrillDown({
 
               {/* Progress bar */}
               <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
-                <div
-                  className="h-full rounded-full transition-all duration-700"
+                <motion.div
+                  className="h-full rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${midpoint * 100}%` }}
+                  transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                   style={{
-                    width: `${midpoint * 100}%`,
                     background: `linear-gradient(90deg, ${color}80, ${color})`,
                     boxShadow: `0 0 10px ${color}60`,
                   }}
@@ -100,7 +98,17 @@ export function SchoolDrillDown({
             </div>
           </div>
 
-          <div className="grid gap-5">
+          <motion.div
+            className="grid gap-5"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.1, delayChildren: 0.25 },
+              },
+            }}
+          >
             <Section
               icon={<Check className="size-4" />}
               title="Working for you"
@@ -119,7 +127,7 @@ export function SchoolDrillDown({
               color="var(--target)"
               items={school.what_would_help}
             />
-          </div>
+          </motion.div>
 
           <div className="flex flex-col-reverse gap-2 border-t border-border pt-4 sm:flex-row sm:justify-between">
             <Button variant="ghost" onClick={() => onOpenChange(false)}>
@@ -152,7 +160,16 @@ function Section({
   items: string[];
 }) {
   return (
-    <div>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 8 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+        },
+      }}
+    >
       <div className="mb-2.5 flex items-center gap-2" style={{ color }}>
         {icon}
         <h3 className="text-xs font-semibold uppercase tracking-widest">{title}</h3>
@@ -168,6 +185,29 @@ function Section({
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
+  );
+}
+
+function AnimatedPercent({ value, color }: { value: number; color: string }) {
+  const count = useMotionValue(0);
+  const display = useTransform(count, (v) => `${Math.round(v * 100)}%`);
+
+  useEffect(() => {
+    count.set(0);
+    const controls = animate(count, value, {
+      duration: 1.1,
+      ease: [0.22, 1, 0.36, 1],
+    });
+    return () => controls.stop();
+  }, [value, count]);
+
+  return (
+    <motion.span
+      className="font-serif text-6xl font-normal leading-none tabular-nums"
+      style={{ color }}
+    >
+      {display}
+    </motion.span>
   );
 }

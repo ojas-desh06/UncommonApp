@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import type { Prediction, SchoolPrediction } from "@/lib/types";
 import { SchoolList } from "./SchoolList";
@@ -27,7 +28,13 @@ export function ResultsView({ prediction }: { prediction: Prediction }) {
   return (
     <>
       <div className="grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-        <div className="rounded-xl border border-border bg-card/40 p-4 shadow-[0_0_40px_-15px_var(--color-primary)]" style={{ boxShadow: "0 0 60px -20px oklch(0.82 0.22 162 / 0.15)" }}>
+        <motion.div
+          className="rounded-xl border border-border bg-card/40 p-4 shadow-[0_0_40px_-15px_var(--color-primary)]"
+          style={{ boxShadow: "0 0 60px -20px oklch(0.82 0.22 162 / 0.15)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="mb-3 flex items-center justify-between px-1">
             <h2 className="font-serif text-lg text-foreground">Your map</h2>
             <div className="flex items-center gap-3 text-[11px] text-muted-foreground">
@@ -38,11 +45,15 @@ export function ResultsView({ prediction }: { prediction: Prediction }) {
             </div>
           </div>
           <USMap schools={prediction.schools} onSelect={openSchool} />
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+        >
           <SchoolList schools={prediction.schools} onSelect={openSchool} />
-        </div>
+        </motion.div>
       </div>
 
       <SchoolDrillDown
