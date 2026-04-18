@@ -9,7 +9,8 @@
     "lint": "eslint",
     "scrape:gpa": "node scripts/scrape-gpa.mjs",
     "fetch:scorecard": "node scripts/fetch-scorecard.mjs",
-    "ingest:scorecard": "node scripts/ingest-scorecard.mjs"
+    "ingest:scorecard": "node scripts/ingest-scorecard.mjs",
+    "ingest:gpa": "node scripts/ingest-gpa.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",

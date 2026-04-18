@@ -112,7 +112,7 @@ async function fetchPage(page) {
     "school.operating": "1",
     "school.degrees_awarded.predominant": "3",
     "school.ownership": "1,2",
-    "latest.student.size__range": "1000..",
+    "latest.student.size__range": "500..",
     "latest.admissions.admission_rate.overall__range": "0.001..0.80",
     fields: FIELDS,
     per_page: String(PER_PAGE),
