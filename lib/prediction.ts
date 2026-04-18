@@ -112,7 +112,7 @@ async function fetchColleges(student: StudentProfile): Promise<College[]> {
     .from("colleges")
     .select("*")
     .not("admission_rate", "is", null)
-    .lte("tuition", student.max_budget * 1.4);
+    .lte("tuition", student.max_budget * 1.8);
 
   if (states.length > 0) query = query.in("state", states);
   if (student.size_preference !== "any") {
@@ -121,17 +121,18 @@ async function fetchColleges(student: StudentProfile): Promise<College[]> {
 
   const { data } = await query.limit(300);
 
-  // If too few results, fall back without size/budget filter
+  // If too few results, relax size and budget but keep region
   if (!data || data.length < 10) {
-    const { data: fallback } = await supabase
+    let relaxed = supabase
       .from("colleges")
       .select("*")
-      .not("admission_rate", "is", null)
-      .limit(300);
-    return mapRows(fallback ?? []);
+      .not("admission_rate", "is", null);
+    if (states.length > 0) relaxed = relaxed.in("state", states);
+    const { data: fallback } = await relaxed.limit(300);
+    if (fallback && fallback.length >= 5) return mapRows(fallback);
   }
 
-  return mapRows(data);
+  return mapRows(data ?? []);
 }
 
 function mapRows(rows: Record<string, unknown>[]): College[] {
@@ -157,8 +158,21 @@ function mapRows(rows: Record<string, unknown>[]): College[] {
   }));
 }
 
+function prominenceScore(college: College): number {
+  // Normalize enrollment on a 0–1 log scale (1k → 0, 50k+ → 1)
+  return Math.min(1, Math.log10(Math.max(college.size, 1000) / 1000) / Math.log10(50));
+}
+
+function rankWithinBucket(scored: { college: College; chance: number }[]) {
+  // Blend 70% chance score + 30% prominence so well-known schools surface
+  return scored
+    .map(s => ({ ...s, rank: s.chance * 0.7 + prominenceScore(s.college) * 0.3 }))
+    .sort((a, b) => b.rank - a.rank);
+}
+
 function pickSpread(scored: { college: College; chance: number }[]) {
-  const by = (cls: Classification) => scored.filter(s => classify(s.chance) === cls);
+  const by = (cls: Classification) =>
+    rankWithinBucket(scored.filter(s => classify(s.chance) === cls));
   return [
     ...by("safety").slice(0, 6),
     ...by("target").slice(0, 10),
