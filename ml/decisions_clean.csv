@@ -1,0 +1,591 @@
+school,gpa,sat,act,outcome,first_gen,state,sat_normalized,outcome_binary
+harvard,4.4,1540.0,,rejected,0,,1540.0,0
+uva,3.7,1500.0,,accepted,0,Virginia,1500.0,1
+georgetown,3.7,1500.0,,accepted,0,Virginia,1500.0,1
+harvard,4.0,1500.0,,accepted,0,Georgia,1500.0,1
+yale,4.0,1500.0,,accepted,0,Georgia,1500.0,1
+princeton,4.0,1500.0,,accepted,0,Georgia,1500.0,1
+columbia,4.0,1500.0,,accepted,0,Georgia,1500.0,1
+penn,4.0,1500.0,,accepted,0,Georgia,1500.0,1
+harvard,4.48,1520.0,,accepted,1,VA,1520.0,1
+yale,4.48,1520.0,,accepted,1,VA,1520.0,1
+princeton,4.48,1520.0,,accepted,1,VA,1520.0,1
+stanford,4.48,1520.0,,accepted,1,VA,1520.0,1
+mit,4.48,1520.0,,accepted,1,VA,1520.0,1
+yale,4.96,1590.0,,rejected,1,Texas,1590.0,0
+a&m,4.96,1590.0,,accepted,1,Texas,1590.0,1
+ut,4.96,1590.0,,waitlisted,1,Texas,1590.0,0
+university of florida,3.63,1520.0,,accepted,0,California,1520.0,1
+purdue university,3.63,1520.0,,accepted,0,California,1520.0,1
+brown,4.3,1330.0,,rejected,0,,1330.0,0
+unc-chapel hill,3.67,1410.0,31.0,rejected,0,NC,1410.0,0
+usc,3.67,1410.0,31.0,accepted,0,NC,1410.0,1
+dartmouth,4.0,1570.0,,accepted,1,NY,1570.0,1
+university of pennsylvania,4.0,1570.0,,accepted,1,NY,1570.0,1
+cornell university,4.0,1570.0,,accepted,1,NY,1570.0,1
+williams college,4.0,1570.0,,accepted,1,NY,1570.0,1
+mit,3.94,1570.0,,accepted,0,Texas,1570.0,1
+uc santa barbara,4.64,1550.0,,accepted,0,California,1550.0,1
+uc berkeley,4.64,1550.0,,rejected,0,California,1550.0,0
+ucla,4.64,1550.0,,waitlisted,0,California,1550.0,0
+uc san diego,4.64,1550.0,,waitlisted,0,California,1550.0,0
+uc irvine,4.64,1550.0,,waitlisted,0,California,1550.0,0
+uc davis,4.64,1550.0,,waitlisted,0,California,1550.0,0
+boston college,3.87,1420.0,,rejected,0,OOS,1420.0,0
+university of pittsburgh,3.87,1420.0,,waitlisted,0,OOS,1420.0,0
+northeastern,3.87,1420.0,,waitlisted,0,OOS,1420.0,0
+penn state,3.87,1420.0,,accepted,0,OOS,1420.0,1
+virginia tech,3.87,1420.0,,accepted,0,OOS,1420.0,1
+james madison university,3.87,1420.0,,accepted,0,OOS,1420.0,1
+fordham,3.87,1420.0,,accepted,0,OOS,1420.0,1
+syracuse,3.87,1420.0,,accepted,0,OOS,1420.0,1
+lsu,3.87,1420.0,,accepted,0,OOS,1420.0,1
+college of the holy cross,3.87,1420.0,,accepted,0,OOS,1420.0,1
+umass boston,3.87,1420.0,,accepted,0,OOS,1420.0,1
+uconn,3.87,1420.0,,accepted,0,OOS,1420.0,1
+university of virginia,3.87,1420.0,,accepted,0,OOS,1420.0,1
+usc,4.0,1540.0,,accepted,0,New York,1540.0,1
+stanford,4.0,1550.0,,waitlisted,0,CA,1550.0,0
+dartmouth,4.98,1540.0,,rejected,0,,1540.0,0
+yale,4.98,1540.0,,rejected,0,,1540.0,0
+brown,4.98,1540.0,,rejected,0,,1540.0,0
+columbia college,4.98,1540.0,,rejected,0,,1540.0,0
+harvard,4.98,1540.0,,rejected,0,,1540.0,0
+stanford,4.98,1540.0,,rejected,0,,1540.0,0
+rice,4.98,1540.0,,rejected,0,,1540.0,0
+nyu,4.98,1540.0,,rejected,0,,1540.0,0
+cornell,4.98,1540.0,,rejected,0,,1540.0,0
+university of pennsylvania,4.98,1540.0,,rejected,0,,1540.0,0
+amherst,4.98,1540.0,,rejected,0,,1540.0,0
+princeton,4.98,1540.0,,rejected,0,,1540.0,0
+johns hopkins university,4.98,1540.0,,rejected,0,,1540.0,0
+mit,4.98,1540.0,,rejected,0,,1540.0,0
+swarthmore,4.98,1540.0,,rejected,0,,1540.0,0
+princeton,3.94,1440.0,36.0,accepted,0,New England,1440.0,1
+virginia tech,3.98,1550.0,,accepted,0,Virginia,1550.0,1
+uc berkeley,4.0,1580.0,,accepted,0,CA,1580.0,1
+wisconsin,4.0,1580.0,,accepted,0,CA,1580.0,1
+illinois,4.0,1580.0,,accepted,0,CA,1580.0,1
+ohio state,4.0,1580.0,,accepted,0,CA,1580.0,1
+minnesota,4.0,1580.0,,accepted,0,CA,1580.0,1
+ucla,4.167,1350.0,,rejected,0,California,1350.0,0
+bu,4.167,1350.0,,accepted,0,,1350.0,1
+usc,4.167,1350.0,,rejected,0,California,1350.0,0
+ucsd,4.167,1350.0,,waitlisted,0,California,1350.0,0
+ucsb,4.167,1350.0,,waitlisted,0,California,1350.0,0
+uci,4.167,1350.0,,rejected,0,California,1350.0,0
+ucd,4.167,1350.0,,waitlisted,0,California,1350.0,0
+sdsu,4.167,1350.0,,waitlisted,0,California,1350.0,0
+american,4.167,1350.0,,accepted,0,,1350.0,1
+university of toronto,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+uga,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+mercer,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of washington,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of south carolina,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of maryland,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of pittsburgh,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of minnesota twin cities,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of wisconsin madison,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+university of oregon,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+michigan state,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+georgia state university,3.78,1340.0,33.0,accepted,0,GA,1340.0,1
+emory,3.78,1340.0,33.0,rejected,0,GA,1340.0,0
+university of virginia,3.78,1340.0,33.0,rejected,0,GA,1340.0,0
+emerson,4.0,1460.0,,accepted,0,FL,1460.0,1
+syracuse,4.0,1460.0,,accepted,0,FL,1460.0,1
+boco,4.0,1460.0,,accepted,0,FL,1460.0,1
+ucf,4.0,1460.0,,waitlisted,0,FL,1460.0,0
+fsu,4.0,1460.0,,rejected,0,FL,1460.0,0
+university of florida,3.63,1520.0,,accepted,0,California,1520.0,1
+purdue university,3.63,1520.0,,accepted,0,California,1520.0,1
+st. lawrence,3.65,1270.0,,accepted,1,,1270.0,1
+endicott,3.65,1270.0,,accepted,1,,1270.0,1
+norwich university,3.65,1270.0,,accepted,1,,1270.0,1
+uvm,3.65,1270.0,,accepted,1,,1270.0,1
+university of maine,3.65,1270.0,,accepted,1,,1270.0,1
+clarkson,3.65,1270.0,,accepted,1,,1270.0,1
+fordham,3.65,1270.0,,accepted,1,,1270.0,1
+babson,3.65,1270.0,,accepted,1,,1270.0,1
+cmu,3.76,1530.0,,rejected,0,,1530.0,0
+purdue,3.76,1530.0,,rejected,0,,1530.0,0
+university of michigan,3.76,1530.0,,waitlisted,0,,1530.0,0
+georgia tech,3.76,1530.0,,rejected,0,,1530.0,0
+uiuc,3.76,1530.0,,rejected,0,,1530.0,0
+university of maryland,3.76,1530.0,,rejected,0,,1530.0,0
+rutgers,3.76,1530.0,,accepted,0,,1530.0,1
+virginia tech,3.76,1530.0,,accepted,0,,1530.0,1
+stevens institute of technology,3.76,1530.0,,accepted,0,,1530.0,1
+university of pennsylvania,3.76,1530.0,,accepted,0,,1530.0,1
+university of georgia,3.7,1360.0,,waitlisted,1,NY,1360.0,0
+clemson university,3.7,1360.0,,waitlisted,1,NY,1360.0,0
+university of alabama,3.7,1360.0,,accepted,1,NY,1360.0,1
+hofstra university,3.7,1360.0,,accepted,1,NY,1360.0,1
+sdsu,3.98,1540.0,,accepted,0,CA,1540.0,1
+uc merced,3.98,1540.0,,accepted,0,CA,1540.0,1
+sjsu,3.98,1540.0,,accepted,0,CA,1540.0,1
+ut austin,3.98,1540.0,,accepted,0,TX,1540.0,1
+umaryland,3.98,1540.0,,accepted,0,MD,1540.0,1
+stony brook,3.98,1540.0,,accepted,0,NY,1540.0,1
+uc santa cruz,3.98,1540.0,,accepted,0,CA,1540.0,1
+uc riverside,3.98,1540.0,,accepted,0,CA,1540.0,1
+uwashington,3.98,1540.0,,accepted,0,WA,1540.0,1
+unc-ch,3.6,1490.0,33.0,accepted,0,NC,1490.0,1
+umd,3.6,1490.0,33.0,accepted,0,NC,1490.0,1
+purdue,3.6,1490.0,33.0,accepted,0,NC,1490.0,1
+virginia tech,3.6,1490.0,33.0,accepted,0,NC,1490.0,1
+uncc,3.6,1490.0,33.0,accepted,0,NC,1490.0,1
+georgia tech,3.6,1490.0,33.0,waitlisted,0,NC,1490.0,0
+ncsu,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+duke,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+jhu,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+ucb,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+ucla,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+ucsd,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+nyu,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+ut austin,3.6,1490.0,33.0,rejected,0,NC,1490.0,0
+harvard,4.0,1500.0,,accepted,0,,1500.0,1
+yale,4.0,1500.0,,accepted,0,,1500.0,1
+princeton,4.0,1500.0,,accepted,0,,1500.0,1
+stanford,4.0,1500.0,,accepted,0,,1500.0,1
+columbia,4.0,1500.0,,accepted,0,,1500.0,1
+penn,4.0,1500.0,,accepted,0,,1500.0,1
+mit,4.0,1500.0,,accepted,0,,1500.0,1
+northwestern,4.0,1500.0,,accepted,0,,1500.0,1
+cal state chico,3.6,,33.0,accepted,0,California,1460.0,1
+fordham rose hill,3.6,,33.0,accepted,0,New York,1460.0,1
+loyola university chicago,3.6,,33.0,accepted,0,Illinois,1460.0,1
+george washington university,3.6,,33.0,accepted,0,District of Columbia,1460.0,1
+"university of california, merced",3.6,,33.0,accepted,0,California,1460.0,1
+"university of california, riverside",3.6,,33.0,accepted,0,California,1460.0,1
+"university of california, santa cruz",3.6,,33.0,accepted,0,California,1460.0,1
+"university of colorado, boulder",3.6,,33.0,accepted,0,Colorado,1460.0,1
+university of oregon,3.6,,33.0,accepted,0,Oregon,1460.0,1
+university of utah,3.6,,33.0,accepted,0,Utah,1460.0,1
+university of washington,3.6,,33.0,accepted,0,Washington,1460.0,1
+northeastern,3.6,,33.0,waitlisted,0,Massachusetts,1460.0,0
+university of michigan,3.45,1560.0,35.0,waitlisted,0,Texas,1560.0,0
+cornell,4.0,1580.0,,accepted,0,,1580.0,1
+northwestern,4.0,1580.0,,accepted,0,,1580.0,1
+cmu,4.0,1580.0,,accepted,0,,1580.0,1
+jhu,4.0,1580.0,,accepted,0,,1580.0,1
+rice,4.0,1580.0,,accepted,0,,1580.0,1
+georgiatech,4.0,1580.0,,waitlisted,0,,1580.0,0
+uchicago,4.0,1580.0,,rejected,0,,1580.0,0
+upenn,4.0,1580.0,,rejected,0,,1580.0,0
+umich,4.0,1580.0,,rejected,0,,1580.0,0
+unc-ch,4.0,1510.0,,accepted,0,,1510.0,1
+bu,4.0,1510.0,,accepted,0,,1510.0,1
+cornell cals,4.0,1510.0,,rejected,0,,1510.0,0
+middlebury,4.0,1510.0,,rejected,0,,1510.0,0
+university of chicago,4.0,1430.0,,rejected,0,,1430.0,0
+colby,4.0,1510.0,,rejected,0,,1510.0,0
+clark university,4.0,1510.0,,rejected,0,,1510.0,0
+university of rochester,4.0,1510.0,,rejected,0,,1510.0,0
+fordham university,4.0,1510.0,,rejected,0,,1510.0,0
+uf,4.41,1420.0,,accepted,0,out of state,1420.0,1
+uw madison,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+virginia tech,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+case western,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+purdue,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+tulane,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+northeastern,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+michigan state,3.64,1480.0,,accepted,0,Michigan,1480.0,1
+uiuc,3.64,1480.0,,rejected,0,Michigan,1480.0,0
+georgia tech,3.64,1480.0,,rejected,0,Michigan,1480.0,0
+university of michigan,3.64,1480.0,,rejected,0,Michigan,1480.0,0
+harvard,4.0,,35.0,accepted,0,,1540.0,1
+stanford,4.0,,35.0,accepted,0,,1540.0,1
+brown,4.0,,35.0,accepted,0,,1540.0,1
+johns hopkins,4.0,,35.0,accepted,0,,1540.0,1
+uc berkeley,4.0,,35.0,accepted,0,,1540.0,1
+ucla,4.0,,35.0,accepted,0,,1540.0,1
+columbia,4.0,,35.0,waitlisted,0,,1540.0,0
+amherst,4.0,,35.0,waitlisted,0,,1540.0,0
+uc irvine,4.0,,35.0,waitlisted,0,,1540.0,0
+fiu,3.3,1440.0,,accepted,0,FL,1440.0,1
+t10 university,3.9,,28.0,rejected,1,,1310.0,0
+stanford,3.92,1550.0,,accepted,0,CA,1550.0,1
+harvard,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+yale,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+princeton,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+columbia,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+university of pennsylvania,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+dartmouth,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+cornell,4.0,1550.0,,rejected,0,Midwest,1550.0,0
+cmu scs,4.0,1580.0,,accepted,1,,1580.0,1
+yale,4.0,1580.0,,accepted,1,,1580.0,1
+ucla,4.0,1580.0,,waitlisted,1,,1580.0,0
+harvard,4.0,1580.0,,rejected,1,,1580.0,0
+princeton,4.0,1580.0,,rejected,1,,1580.0,0
+mit,4.0,1580.0,,rejected,1,,1580.0,0
+stanford,4.0,1580.0,,rejected,1,,1580.0,0
+uc berkeley,4.0,1580.0,,rejected,1,,1580.0,0
+caltech,4.0,1580.0,,rejected,1,,1580.0,0
+stanford,3.96,,34.0,accepted,0,,1500.0,1
+tulane,3.95,1520.0,,accepted,0,,1520.0,1
+pomona,3.95,1520.0,,accepted,0,,1520.0,1
+uchicago,3.95,1520.0,,accepted,0,,1520.0,1
+vanderbilt,3.95,1520.0,,accepted,0,,1520.0,1
+ball state,3.7,1490.0,35.0,accepted,0,Indiana,1490.0,1
+case western,3.7,1490.0,35.0,waitlisted,0,Indiana,1490.0,0
+iu bloomington,3.7,1490.0,35.0,waitlisted,0,Indiana,1490.0,0
+university of alabama,3.7,1490.0,35.0,accepted,0,Indiana,1490.0,1
+university of cincinnati,3.7,1490.0,35.0,rejected,0,Indiana,1490.0,0
+harvard,4.0,1490.0,34.0,accepted,1,CA,1490.0,1
+yale,4.0,1490.0,34.0,accepted,1,CA,1490.0,1
+princeton,4.0,1490.0,34.0,accepted,1,CA,1490.0,1
+stanford,4.0,1490.0,34.0,accepted,1,CA,1490.0,1
+mit,4.0,1490.0,34.0,accepted,1,CA,1490.0,1
+yale,3.99,1560.0,,accepted,0,CO,1560.0,1
+brown,3.99,1560.0,,accepted,0,CO,1560.0,1
+michigan,3.7,,30.0,rejected,0,,1370.0,0
+cornell,3.7,,30.0,rejected,0,,1370.0,0
+northwestern,3.8,,33.0,accepted,0,,1460.0,1
+penn,3.7,,30.0,rejected,0,,1370.0,0
+washu,3.7,,30.0,rejected,0,,1370.0,0
+vanderbilt,3.8,,33.0,accepted,0,,1460.0,1
+bu,3.8,,33.0,accepted,0,,1460.0,1
+purdue,3.68,1480.0,,accepted,0,Washington,1480.0,1
+uiuc,3.68,1480.0,,accepted,0,Washington,1480.0,1
+case western,3.68,1480.0,,accepted,0,Washington,1480.0,1
+georgia tech,3.68,1480.0,,accepted,0,Washington,1480.0,1
+university of washington,3.68,1480.0,,accepted,0,Washington,1480.0,1
+indiana university,3.68,1480.0,,accepted,0,Washington,1480.0,1
+virginia tech,3.68,1480.0,,accepted,0,Washington,1480.0,1
+university of minnesota,3.68,1480.0,,accepted,0,Washington,1480.0,1
+usc,3.68,1480.0,,accepted,0,Washington,1480.0,1
+uc davis,3.68,1480.0,,accepted,0,Washington,1480.0,1
+uc irvine,3.68,1480.0,,accepted,0,Washington,1480.0,1
+uc santa barbara,3.68,1480.0,,accepted,0,Washington,1480.0,1
+university of chicago,3.68,1480.0,,waitlisted,0,Washington,1480.0,0
+carnegie mellon,3.68,1480.0,,rejected,0,Washington,1480.0,0
+cornell,3.96,1590.0,,accepted,0,Massachusetts,1590.0,1
+texas a&m,3.9,,16.0,waitlisted,0,,890.0,0
+wake forest,3.9,,16.0,accepted,0,,890.0,1
+duke,3.9,,16.0,waitlisted,0,,890.0,0
+uva,3.9,,16.0,waitlisted,0,,890.0,0
+northwestern,3.9,,16.0,waitlisted,0,,890.0,0
+cornell,3.89,1500.0,,accepted,0,OH,1500.0,1
+division 3 school (recruited),3.94,1520.0,,accepted,0,,1520.0,1
+harvard,4.96,1570.0,,accepted,0,Texas,1570.0,1
+yale,4.96,1570.0,,accepted,0,Texas,1570.0,1
+princeton,4.96,1570.0,,accepted,0,Texas,1570.0,1
+stanford,4.96,1570.0,,accepted,0,Texas,1570.0,1
+mit,4.96,1570.0,,accepted,0,Texas,1570.0,1
+penn,4.96,1570.0,,accepted,0,Texas,1570.0,1
+northwestern,4.96,1570.0,,accepted,0,Texas,1570.0,1
+duke,4.96,1570.0,,accepted,0,Texas,1570.0,1
+cornell,4.96,1570.0,,rejected,0,Texas,1570.0,0
+cornell,4.57,1510.0,,accepted,0,Maryland,1510.0,1
+suny university of buffalo,4.57,1510.0,,accepted,0,Maryland,1510.0,1
+suny binghamton,4.57,1510.0,,accepted,0,Maryland,1510.0,1
+suny stonybrook,4.57,1510.0,,accepted,0,Maryland,1510.0,1
+colorado state university,3.95,1480.0,,accepted,0,Texas,1480.0,1
+texas a&m university,3.95,1480.0,,accepted,0,Texas,1480.0,1
+cmu,3.96,1530.0,,accepted,0,,1530.0,1
+harvard law school,3.9,,17.0,accepted,0,,930.0,1
+university of chicago law school,3.9,,17.0,waitlisted,0,,930.0,0
+university of pennsylvania law school,3.9,,17.0,waitlisted,0,,930.0,0
+ivy league,3.8,1400.0,,accepted,0,,1400.0,1
+university of chicago,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+uc berkeley,3.92,,34.0,accepted,0,California,1500.0,1
+uc los angeles,3.92,,34.0,accepted,0,California,1500.0,1
+uc san diego,3.92,,34.0,accepted,0,California,1500.0,1
+uc davis,3.92,,34.0,accepted,0,California,1500.0,1
+uc irvine,3.92,,34.0,accepted,0,California,1500.0,1
+uc santa barbara,3.92,,34.0,accepted,0,California,1500.0,1
+stevens institute of technology,4.0,1560.0,,accepted,0,,1560.0,1
+northeastern university,4.0,1560.0,,accepted,0,,1560.0,1
+university of maryland,4.0,1560.0,,accepted,0,,1560.0,1
+rutgers university,4.0,1560.0,,accepted,0,,1560.0,1
+georgia institute of technology,4.0,1560.0,,accepted,0,,1560.0,1
+university of michigan,4.0,1560.0,,accepted,0,,1560.0,1
+university of pittsburgh,4.0,1560.0,,accepted,0,,1560.0,1
+umass amherst,4.0,1560.0,,accepted,0,,1560.0,1
+university of delaware,4.0,1560.0,,accepted,0,,1560.0,1
+umd college park,3.7,1520.0,,accepted,0,NY,1520.0,1
+ubuffalo,3.7,1520.0,,accepted,0,NY,1520.0,1
+uiuc,3.7,1520.0,,rejected,0,NY,1520.0,0
+mit,3.7,1520.0,,waitlisted,0,NY,1520.0,0
+stony brook,3.7,1520.0,,waitlisted,0,NY,1520.0,0
+suny binghamton,3.7,1520.0,,waitlisted,0,NY,1520.0,0
+uc berkeley,3.91,860.0,17.0,waitlisted,1,CA,860.0,0
+pomona college,3.91,860.0,17.0,accepted,1,CA,860.0,1
+university of san francisco,3.91,860.0,17.0,accepted,1,CA,860.0,1
+uc davis,3.91,860.0,17.0,accepted,1,CA,860.0,1
+uiuc,3.75,1540.0,,accepted,0,CA,1540.0,1
+usc,4.2,,34.0,waitlisted,0,CA,1500.0,0
+purdue,4.2,,34.0,rejected,0,CA,1500.0,0
+uc merced,4.2,,34.0,accepted,0,CA,1500.0,1
+oregon state,4.2,,34.0,accepted,0,CA,1500.0,1
+san jose state,4.2,,34.0,accepted,0,CA,1500.0,1
+brown,3.86,1560.0,,accepted,0,CA,1560.0,1
+mit,3.86,1560.0,,waitlisted,0,CA,1560.0,0
+uchicago,3.86,1560.0,,waitlisted,0,CA,1560.0,0
+sdsu,3.96,1400.0,,accepted,1,California,1400.0,1
+university of oregon,3.96,1400.0,,accepted,1,California,1400.0,1
+northeastern,3.5,1270.0,,accepted,1,,1270.0,1
+st. lawrence,3.5,1270.0,,accepted,1,,1270.0,1
+endicott,3.5,1270.0,,accepted,1,,1270.0,1
+norwich university,3.5,1270.0,,accepted,1,,1270.0,1
+university of vermont,3.5,1270.0,,accepted,1,,1270.0,1
+university of maine,3.5,1270.0,,accepted,1,,1270.0,1
+clarkson,3.5,1270.0,,accepted,1,,1270.0,1
+rit,3.88,1500.0,,accepted,0,,1500.0,1
+hunter college,3.88,1500.0,,accepted,0,,1500.0,1
+ccny,3.88,1500.0,,accepted,0,,1500.0,1
+drexel,3.88,1500.0,,accepted,0,,1500.0,1
+umich,4.1,,33.0,accepted,0,,1460.0,1
+uiuc,4.0,,35.0,accepted,1,Midwest,1540.0,1
+purdue university,4.0,,35.0,accepted,1,Midwest,1540.0,1
+virginia tech,4.0,,35.0,accepted,1,Midwest,1540.0,1
+washu,4.0,,35.0,accepted,1,Midwest,1540.0,1
+northwestern university,4.0,,35.0,rejected,1,Midwest,1540.0,0
+georgia tech,4.0,,35.0,rejected,1,Midwest,1540.0,0
+uga,4.0,,35.0,rejected,0,Minnesota,1540.0,0
+fordham,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+villanova,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+iu-kelley,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+urichmond,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+lehigh,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+wake forest,4.0,,35.0,accepted,0,Minnesota,1540.0,1
+boston college,4.0,,35.0,waitlisted,0,Minnesota,1540.0,0
+holy cross,4.0,,35.0,waitlisted,0,Minnesota,1540.0,0
+uva,4.0,,35.0,rejected,0,Minnesota,1540.0,0
+notre dame,4.0,,35.0,rejected,0,Minnesota,1540.0,0
+st. olaf,3.87,1500.0,,accepted,0,,1500.0,1
+florida institute of technology,3.98,1540.0,,accepted,0,,1540.0,1
+minnesota state mankato,3.98,1540.0,,accepted,0,,1540.0,1
+utah state university,3.98,1540.0,,accepted,0,,1540.0,1
+temple,3.98,1540.0,,accepted,0,,1540.0,1
+baylor,3.98,1540.0,,accepted,0,,1540.0,1
+auburn,3.98,1540.0,,accepted,0,,1540.0,1
+university of oklahoma,3.98,1540.0,,accepted,0,,1540.0,1
+saint louis university,3.98,1540.0,,accepted,0,,1540.0,1
+fordham,3.98,1540.0,,accepted,0,,1540.0,1
+howard,3.98,1540.0,,accepted,0,,1540.0,1
+tulane,3.98,1540.0,,rejected,0,,1540.0,0
+purdue,3.98,1540.0,,rejected,0,,1540.0,0
+the ohio state university,3.98,1540.0,,accepted,0,,1540.0,1
+northeastern,3.98,1540.0,,accepted,0,,1540.0,1
+boston college,3.98,1540.0,,accepted,0,,1540.0,1
+tufts,3.98,1540.0,,accepted,0,,1540.0,1
+nyu,3.98,1540.0,,rejected,0,,1540.0,0
+columbia,3.98,1540.0,,rejected,0,,1540.0,0
+boston university,3.98,1540.0,,rejected,0,,1540.0,0
+georgia tech,3.98,1540.0,,accepted,0,,1540.0,1
+st olaf,3.98,1540.0,,accepted,0,,1540.0,1
+williams,3.98,1540.0,,waitlisted,0,,1540.0,0
+colgate,3.98,1540.0,,waitlisted,0,,1540.0,0
+yale,3.98,1540.0,,rejected,0,,1540.0,0
+mit,3.98,1540.0,,rejected,0,,1540.0,0
+case western,3.98,1540.0,,rejected,0,,1540.0,0
+pomona,3.98,1540.0,,rejected,0,,1540.0,0
+amherst,3.98,1540.0,,rejected,0,,1540.0,0
+swarthmore,3.98,1540.0,,rejected,0,,1540.0,0
+colby,3.98,1540.0,,rejected,0,,1540.0,0
+william & mary,3.8,1600.0,,accepted,0,,1600.0,1
+northwestern,3.8,1600.0,,waitlisted,0,,1600.0,0
+georgetown university law center,3.8,1600.0,,waitlisted,0,,1600.0,0
+uva,3.8,,17.0,accepted,0,,930.0,1
+georgetown,3.8,,17.0,accepted,0,,930.0,1
+harvard law school,3.8,,17.0,accepted,0,,930.0,1
+purdue university,3.52,1440.0,,accepted,0,Maryland,1440.0,1
+university of maryland college park,3.52,1440.0,,rejected,0,Maryland,1440.0,0
+princeton,4.0,,36.0,rejected,0,Tennessee,1590.0,0
+georgia tech,4.0,1400.0,,accepted,0,,1400.0,1
+university of georgia,4.0,1400.0,,accepted,0,,1400.0,1
+uc irvine,4.0,1400.0,,accepted,0,,1400.0,1
+uc davis,4.0,1400.0,,accepted,0,,1400.0,1
+uc santa barbara,4.0,1400.0,,accepted,0,,1400.0,1
+uc san diego,4.0,1400.0,,accepted,0,,1400.0,1
+ucla,4.0,1400.0,,accepted,0,,1400.0,1
+university of chicago,4.0,1400.0,,waitlisted,0,,1400.0,0
+northeastern university,4.0,1400.0,,waitlisted,0,,1400.0,0
+washington university in st. louis,4.0,1400.0,,waitlisted,0,,1400.0,0
+mit,4.0,1400.0,,rejected,0,,1400.0,0
+carnegie mellon university,4.0,1400.0,,rejected,0,,1400.0,0
+johns hopkins university,4.0,1400.0,,rejected,0,,1400.0,0
+university of washington,4.0,1400.0,,rejected,0,,1400.0,0
+university of texas at austin,4.0,1400.0,,rejected,0,,1400.0,0
+johns hopkins university,4.0,1560.0,,rejected,0,Washington,1560.0,0
+washington university in st. louis,4.0,1560.0,,accepted,0,Washington,1560.0,1
+georgia tech,4.0,1550.0,35.0,accepted,0,NC,1550.0,1
+william & mary,3.6,1480.0,,accepted,0,,1480.0,1
+university of wisconsin-madison,3.6,1480.0,,accepted,0,,1480.0,1
+johns hopkins,3.99,1560.0,,waitlisted,0,CA,1560.0,0
+university of wisconsin-madison,3.99,1560.0,,accepted,0,CA,1560.0,1
+university of maryland,3.99,1560.0,,accepted,0,CA,1560.0,1
+northeastern,3.99,1560.0,,accepted,0,CA,1560.0,1
+university of washington,3.99,1560.0,,accepted,0,CA,1560.0,1
+uc santa cruz,3.99,1560.0,,accepted,0,CA,1560.0,1
+"university of california, irvine",3.99,1560.0,,waitlisted,0,CA,1560.0,0
+ucla,3.99,1560.0,,accepted,0,CA,1560.0,1
+uc san diego,3.99,1560.0,,accepted,0,CA,1560.0,1
+princeton,4.0,,36.0,rejected,0,US south,1590.0,0
+miami university (oh),3.93,,35.0,accepted,1,Tennessee,1540.0,1
+case western reserve university,3.93,,35.0,accepted,1,Tennessee,1540.0,1
+university of chicago,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+washington university in st. louis,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+amherst college,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+bowdoin college,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+colgate university,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+wake forest university,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+university of notre dame,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+university of pennsylvania,3.93,,35.0,rejected,1,Tennessee,1540.0,0
+georgia tech,4.73,1560.0,34.0,rejected,0,IL,1560.0,0
+purdue,4.73,1560.0,34.0,accepted,0,IL,1560.0,1
+unc chapel hill,4.73,1560.0,34.0,accepted,0,IL,1560.0,1
+uw-madison,4.73,1560.0,34.0,accepted,0,IL,1560.0,1
+uiuc,4.73,1560.0,34.0,accepted,0,IL,1560.0,1
+uc berkeley,4.0,1500.0,,accepted,0,NJ,1500.0,1
+ucla,4.0,1500.0,,accepted,0,NJ,1500.0,1
+usc,4.0,1500.0,,accepted,0,NJ,1500.0,1
+university of miami,4.0,1500.0,,accepted,0,NJ,1500.0,1
+asu,4.0,1500.0,,accepted,0,NJ,1500.0,1
+rutgers,4.0,1500.0,,accepted,0,NJ,1500.0,1
+vanderbilt,4.0,1500.0,,waitlisted,0,NJ,1500.0,0
+brown,4.0,1500.0,,rejected,0,NJ,1500.0,0
+ut austin,4.0,1500.0,,rejected,0,NJ,1500.0,0
+emory,4.0,1500.0,,rejected,0,NJ,1500.0,0
+stanford,4.0,1500.0,,rejected,0,NJ,1500.0,0
+cmu sams,3.9,1270.0,,accepted,0,,1270.0,1
+yygs,3.9,1270.0,,waitlisted,0,,1270.0,0
+young leaders summit,3.9,1270.0,,rejected,0,,1270.0,0
+national history academy,3.9,1270.0,,accepted,0,,1270.0,1
+qb cps,3.9,1270.0,,rejected,0,,1270.0,0
+pcom opportunities junior mentor,3.9,1270.0,,accepted,0,,1270.0,1
+usc,3.7,1360.0,,accepted,0,NJ,1360.0,1
+nyu,3.7,1360.0,,accepted,0,NJ,1360.0,1
+university of rochester,4.0,1530.0,,accepted,0,OH,1530.0,1
+oberlin,4.0,1530.0,,accepted,0,OH,1530.0,1
+denison,4.0,1530.0,,accepted,0,OH,1530.0,1
+hamilton,4.0,1530.0,,accepted,0,OH,1530.0,1
+colby,4.0,1530.0,,accepted,0,OH,1530.0,1
+bates,4.0,1530.0,,waitlisted,0,OH,1530.0,0
+cmu,4.0,1530.0,,waitlisted,0,OH,1530.0,0
+cwru,4.0,1530.0,,waitlisted,0,OH,1530.0,0
+skidmore,4.0,1530.0,,waitlisted,0,OH,1530.0,0
+wesleyan,4.0,1530.0,,waitlisted,0,OH,1530.0,0
+amherst,4.0,1530.0,,rejected,0,OH,1530.0,0
+bowdoin,4.0,1530.0,,rejected,0,OH,1530.0,0
+brown,4.0,1530.0,,rejected,0,OH,1530.0,0
+macalester,4.0,1530.0,,rejected,0,OH,1530.0,0
+middlebury,4.0,1530.0,,rejected,0,OH,1530.0,0
+princeton,4.0,1530.0,,rejected,0,OH,1530.0,0
+swarthmore,4.0,1530.0,,rejected,0,OH,1530.0,0
+williams,4.0,1530.0,,rejected,0,OH,1530.0,0
+texas a&m,3.7,,36.0,rejected,0,,1590.0,0
+ucsb,3.7,,36.0,waitlisted,0,,1590.0,0
+purdue,3.7,,36.0,accepted,0,,1590.0,1
+brandeis,3.7,,36.0,accepted,0,,1590.0,1
+smu,3.7,,36.0,accepted,0,,1590.0,1
+baylor,3.7,,36.0,accepted,0,,1590.0,1
+rpi,3.7,,36.0,accepted,0,,1590.0,1
+trinity,3.7,,36.0,accepted,0,,1590.0,1
+university of chicago,4.0,,33.0,accepted,0,,1460.0,1
+stony brook,4.3,1510.0,,accepted,1,New York,1510.0,1
+binghamton university,4.3,1510.0,,accepted,1,New York,1510.0,1
+rutgers university,4.3,1510.0,,accepted,1,New York,1510.0,1
+cornell university,4.3,1510.0,,accepted,1,New York,1510.0,1
+boston university,4.3,1510.0,,waitlisted,1,New York,1510.0,0
+new york university,4.3,1510.0,,waitlisted,1,New York,1510.0,0
+northeastern university,4.3,1510.0,,waitlisted,1,New York,1510.0,0
+columbia university,4.3,1510.0,,rejected,1,New York,1510.0,0
+university of pennsylvania,4.3,1510.0,,rejected,1,New York,1510.0,0
+university of virginia,4.3,1510.0,,rejected,1,New York,1510.0,0
+university of kentucky,2.96,,33.0,accepted,0,MN,1460.0,1
+michigan state university,2.96,,33.0,accepted,0,MN,1460.0,1
+james madison university,2.96,,33.0,accepted,0,MN,1460.0,1
+missouri state university,2.96,,33.0,accepted,0,MN,1460.0,1
+binghamton university,2.96,,33.0,accepted,0,MN,1460.0,1
+university of minnesota,2.96,,33.0,rejected,0,MN,1460.0,0
+macalester college,2.96,,33.0,rejected,0,MN,1460.0,0
+amherst,4.45,1530.0,33.0,accepted,0,,1530.0,1
+boston college,4.45,1530.0,33.0,accepted,0,,1530.0,1
+johns hopkins,4.45,1530.0,33.0,waitlisted,0,,1530.0,0
+washington university in st. louis,4.45,1530.0,33.0,waitlisted,0,,1530.0,0
+colgate,4.45,1530.0,33.0,waitlisted,0,,1530.0,0
+swarthmore,4.45,1530.0,33.0,rejected,0,,1530.0,0
+tufts,4.45,1530.0,33.0,rejected,0,,1530.0,0
+cornell,4.0,,35.0,accepted,0,,1540.0,1
+uchicago,4.0,,35.0,accepted,0,,1540.0,1
+duke,4.0,,35.0,rejected,0,,1540.0,0
+harvard,4.0,,35.0,rejected,0,,1540.0,0
+stanford,4.0,,35.0,rejected,0,,1540.0,0
+brown,4.0,,35.0,accepted,0,,1540.0,1
+yale,4.0,,35.0,rejected,0,,1540.0,0
+northwestern,4.0,,35.0,accepted,0,,1540.0,1
+northwestern,4.0,1440.0,,accepted,0,Massachusetts,1440.0,1
+barnard college,4.0,1440.0,,accepted,0,Massachusetts,1440.0,1
+georgetown university,4.0,1440.0,,accepted,0,Massachusetts,1440.0,1
+nyu stern school of business,4.0,1440.0,,accepted,0,Massachusetts,1440.0,1
+columbia,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+cornell,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+upenn,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+jhu,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+duke,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+stanford,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+uchicago,4.0,1440.0,,rejected,0,Massachusetts,1440.0,0
+unf,3.98,1510.0,,accepted,0,Florida,1510.0,1
+usf,3.98,1510.0,,accepted,0,Florida,1510.0,1
+uf,3.98,1510.0,,accepted,0,Florida,1510.0,1
+upitt,3.98,1510.0,,accepted,0,Florida,1510.0,1
+rutgers,3.98,1510.0,,accepted,0,Florida,1510.0,1
+uga,3.98,1510.0,,accepted,0,Florida,1510.0,1
+uw-madison,3.98,1510.0,,accepted,0,Florida,1510.0,1
+umich,3.98,1510.0,,accepted,0,Florida,1510.0,1
+virginia tech,3.98,1510.0,,accepted,0,Florida,1510.0,1
+northeastern,3.98,1510.0,,accepted,0,Florida,1510.0,1
+uw,3.98,1510.0,,accepted,0,Florida,1510.0,1
+georgia tech,3.98,1510.0,,waitlisted,0,Florida,1510.0,0
+tufts,3.98,1510.0,,waitlisted,0,Florida,1510.0,0
+emory,3.98,1510.0,,waitlisted,0,Florida,1510.0,0
+uva,3.98,1510.0,,rejected,0,Florida,1510.0,0
+unc,3.98,1510.0,,rejected,0,Florida,1510.0,0
+cwru,3.98,1510.0,,rejected,0,Florida,1510.0,0
+northwestern,3.98,1510.0,,rejected,0,Florida,1510.0,0
+vanderbilt,3.98,1510.0,,rejected,0,Florida,1510.0,0
+cornell,3.98,1510.0,,rejected,0,Florida,1510.0,0
+stanford,4.0,1520.0,,accepted,1,California,1520.0,1
+university of texas at austin,3.96,1440.0,,accepted,0,Texas,1440.0,1
+brown,4.0,1550.0,,rejected,0,MA,1550.0,0
+mcgill,4.0,1510.0,,accepted,0,NY,1510.0,1
+union college,4.0,1510.0,,accepted,0,NY,1510.0,1
+uc davis,4.0,1510.0,,accepted,0,NY,1510.0,1
+university of manchester,4.0,1510.0,,accepted,0,NY,1510.0,1
+franklin & marshall,4.0,1510.0,,waitlisted,0,NY,1510.0,0
+occidental,4.0,1510.0,,waitlisted,0,NY,1510.0,0
+skidmore,4.0,1510.0,,waitlisted,0,NY,1510.0,0
+northeastern,4.0,1510.0,,rejected,0,NY,1510.0,0
+university of virginia,4.0,1510.0,,rejected,0,NY,1510.0,0
+mit,4.0,1510.0,,rejected,0,NY,1510.0,0
+university of chicago,4.0,1510.0,,rejected,0,NY,1510.0,0
+tufts,4.0,1510.0,,rejected,0,NY,1510.0,0
+johns hopkins university,4.0,1510.0,,rejected,0,NY,1510.0,0
+harvard,4.0,,35.0,accepted,0,Arizona,1540.0,1
+yale,4.0,,35.0,accepted,0,Arizona,1540.0,1
+princeton,4.0,,35.0,accepted,0,Arizona,1540.0,1
+stanford,4.0,,35.0,accepted,0,Arizona,1540.0,1
+mit,4.0,,35.0,accepted,0,Arizona,1540.0,1
+duke,4.0,,35.0,waitlisted,0,Arizona,1540.0,0
+state school,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+indiana university kelley,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+university of virginia,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+boston college,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+boston university,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+university of michigan,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+cornell university,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+yale university,3.95,1520.0,,accepted,0,East Coast,1520.0,1
+northeastern university,3.95,1520.0,,waitlisted,0,East Coast,1520.0,0
+oregon tech,4.0,1490.0,,accepted,0,Oregon,1490.0,1
+oregon state university,4.0,1490.0,,accepted,0,Oregon,1490.0,1
+university of oregon,4.0,1490.0,,accepted,0,Oregon,1490.0,1
+george washington university,4.4,1280.0,,accepted,0,,1280.0,1
+catholic university of america,4.4,1280.0,,accepted,0,,1280.0,1
+boston college,4.4,1280.0,,accepted,0,,1280.0,1
+washington and lee university,4.4,1280.0,,waitlisted,0,,1280.0,0
+american university,4.4,1280.0,,accepted,0,,1280.0,1
+tufts university,4.4,1280.0,,rejected,0,,1280.0,0
+georgetown university,4.4,1280.0,,rejected,0,,1280.0,0
+new york university,4.4,1280.0,,rejected,0,,1280.0,0
