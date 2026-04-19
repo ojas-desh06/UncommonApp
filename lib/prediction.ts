@@ -192,20 +192,12 @@ type Narrative = {
 
 type NarrativeResult = { headline: string; schools: Narrative[] };
 
-async function generateNarratives(
-  student: StudentProfile,
-  selected: { college: College; chance: number; classification: Classification }[],
-  essay: EssayScores | null,
-): Promise<NarrativeResult> {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.error("[prediction] ANTHROPIC_API_KEY is not set, using fallback narratives");
-    return fallbackNarratives(student, selected);
-  }
+const NARRATIVE_CHUNK_SIZE = 5;
 
+function buildProfile(student: StudentProfile, essay: EssayScores | null): string {
   const sat = toSat(student);
   const gpa = Math.max(student.gpa_unweighted, student.gpa_weighted - 0.5).toFixed(2);
-
-  const profile = [
+  return [
     `GPA: ${gpa} UW / ${student.gpa_weighted.toFixed(2)} W`,
     student.test_type === "test_optional"
       ? "Test optional"
@@ -217,8 +209,10 @@ async function generateNarratives(
     `First-gen: ${student.first_gen} | Legacy: ${student.legacy} | Athlete: ${student.recruited_athlete}`,
     essay ? `Essay: ${essay.overall}/10 — ${essay.summary}` : "No essay analyzed",
   ].join("\n");
+}
 
-  const schools = selected.map(s => ({
+function schoolSummary(s: { college: College; chance: number; classification: Classification }) {
+  return {
     id: s.college.id,
     name: s.college.name,
     state: s.college.location.state,
@@ -229,93 +223,147 @@ async function generateNarratives(
       : "not reported",
     classification: s.classification,
     modeled_chance: `${(s.chance * 100).toFixed(0)}%`,
-  }));
+  };
+}
 
-  const client = new Anthropic();
+async function callNarrativeChunk(
+  client: Anthropic,
+  profile: string,
+  chunk: { college: College; chance: number; classification: Classification }[],
+  includeHeadline: boolean,
+): Promise<NarrativeResult | null> {
+  const schools = chunk.map(schoolSummary);
+  const headlineProp = includeHeadline
+    ? {
+        headline: {
+          type: "string" as const,
+          description: "1-2 sentence honest overall assessment of this student's profile",
+        },
+      }
+    : {};
+  const properties = {
+    ...headlineProp,
+    schools: {
+      type: "array" as const,
+      items: {
+        type: "object" as const,
+        properties: {
+          college_id: { type: "string" as const },
+          working_for: {
+            type: "array" as const,
+            items: { type: "string" as const },
+            minItems: 3,
+            maxItems: 3,
+            description: "Exactly 3 specific factors in the student's favor at this school",
+          },
+          working_against: {
+            type: "array" as const,
+            items: { type: "string" as const },
+            minItems: 3,
+            maxItems: 3,
+            description: "Exactly 3 specific factors working against the student at this school",
+          },
+          what_would_help: {
+            type: "array" as const,
+            items: { type: "string" as const },
+            minItems: 1,
+            maxItems: 2,
+            description: "1-2 concrete, actionable things that would improve this student's chances",
+          },
+        },
+        required: ["college_id", "working_for", "working_against", "what_would_help"],
+      },
+    },
+  };
 
   try {
     const response = await client.messages.create({
-    model: "claude-haiku-4-5",
-    max_tokens: 8192,
-    system: [
-      {
-        type: "text",
-        text: "You are a college admissions counselor. Write honest, specific, data-grounded analysis. Avoid generic filler. Reference actual numbers from the student's profile and the school's stats.",
-        cache_control: { type: "ephemeral" },
-      },
-    ],
-    tools: [
-      {
-        name: "submit_narratives",
-        description: "Submit personalized admissions narratives for each school",
-        input_schema: {
-          type: "object" as const,
-          properties: {
-            headline: {
-              type: "string",
-              description: "1-2 sentence honest overall assessment of this student's list",
-            },
-            schools: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  college_id: { type: "string" },
-                  working_for: {
-                    type: "array",
-                    items: { type: "string" },
-                    minItems: 3,
-                    maxItems: 3,
-                    description: "Exactly 3 specific factors in the student's favor at this school",
-                  },
-                  working_against: {
-                    type: "array",
-                    items: { type: "string" },
-                    minItems: 3,
-                    maxItems: 3,
-                    description: "Exactly 3 specific factors working against the student at this school",
-                  },
-                  what_would_help: {
-                    type: "array",
-                    items: { type: "string" },
-                    minItems: 1,
-                    maxItems: 2,
-                    description: "1-2 concrete, actionable things that would improve this student's chances",
-                  },
-                },
-                required: ["college_id", "working_for", "working_against", "what_would_help"],
-              },
-            },
-          },
-          required: ["headline", "schools"],
+      model: "claude-haiku-4-5",
+      max_tokens: 2048,
+      system: [
+        {
+          type: "text",
+          text: "You are a college admissions counselor. Write honest, specific, data-grounded analysis. Avoid generic filler. Reference actual numbers from the student's profile and the school's stats.",
+          cache_control: { type: "ephemeral" },
         },
-      },
-    ],
-    tool_choice: { type: "tool", name: "submit_narratives" },
-    messages: [
-      {
-        role: "user",
-        content: `Student profile:\n${profile}\n\nSchools to analyze:\n${JSON.stringify(schools, null, 2)}\n\nFor each school, generate honest narratives based on how this student's numbers compare to that school's admitted student profile.`,
-      },
-    ],
-  });
+      ],
+      tools: [
+        {
+          name: "submit_narratives",
+          description: "Submit personalized admissions narratives for each school",
+          input_schema: {
+            type: "object" as const,
+            properties,
+            required: includeHeadline ? ["headline", "schools"] : ["schools"],
+          },
+        },
+      ],
+      tool_choice: { type: "tool", name: "submit_narratives" },
+      messages: [
+        {
+          role: "user",
+          content: `Student profile:\n${profile}\n\nSchools to analyze:\n${JSON.stringify(schools, null, 2)}\n\nFor each school, generate honest narratives based on how this student's numbers compare to that school's admitted student profile.`,
+        },
+      ],
+    });
 
     const tool = response.content.find(b => b.type === "tool_use");
     if (!tool || tool.type !== "tool_use") {
-      console.error("[prediction] Claude did not return tool_use:", JSON.stringify(response.content));
-      return fallbackNarratives(student, selected);
+      console.error("[prediction] Claude chunk did not return tool_use");
+      return null;
     }
-
     const result = tool.input as NarrativeResult;
     if (!result.schools || !Array.isArray(result.schools)) {
-      console.error("[prediction] Unexpected Claude output shape:", JSON.stringify(result));
-      return fallbackNarratives(student, selected);
+      console.error("[prediction] Unexpected Claude chunk output shape");
+      return null;
     }
     return result;
   } catch (err) {
-    console.error("[prediction] Claude call failed:", err);
+    console.error("[prediction] Claude chunk failed:", err);
+    return null;
+  }
+}
+
+async function generateNarratives(
+  student: StudentProfile,
+  selected: { college: College; chance: number; classification: Classification }[],
+  essay: EssayScores | null,
+): Promise<NarrativeResult> {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    console.error("[prediction] ANTHROPIC_API_KEY is not set, using fallback narratives");
     return fallbackNarratives(student, selected);
   }
+
+  const profile = buildProfile(student, essay);
+  const client = new Anthropic();
+
+  // Split into parallel chunks so Claude processes them concurrently instead of
+  // emitting one long serialized response. Only the first chunk returns the headline.
+  const chunks: typeof selected[] = [];
+  for (let i = 0; i < selected.length; i += NARRATIVE_CHUNK_SIZE) {
+    chunks.push(selected.slice(i, i + NARRATIVE_CHUNK_SIZE));
+  }
+
+  const results = await Promise.all(
+    chunks.map((chunk, idx) => callNarrativeChunk(client, profile, chunk, idx === 0)),
+  );
+
+  const schools: Narrative[] = [];
+  let headline: string | undefined;
+  for (const r of results) {
+    if (!r) continue;
+    if (r.headline && !headline) headline = r.headline;
+    schools.push(...r.schools);
+  }
+
+  // If we got nothing back, fall back. If we got a partial, fall back for the missing ones.
+  if (schools.length === 0) return fallbackNarratives(student, selected);
+  const fallback = fallbackNarratives(student, selected);
+  const gotIds = new Set(schools.map(s => s.college_id));
+  for (const f of fallback.schools) {
+    if (!gotIds.has(f.college_id)) schools.push(f);
+  }
+  return { headline: headline ?? fallback.headline, schools };
 }
 
 function fallbackNarratives(
