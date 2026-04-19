@@ -10,7 +10,6 @@ import { ActivitiesSection } from "./sections/Activities";
 import { AwardsSection } from "./sections/Awards";
 import { BackgroundSection } from "./sections/Background";
 import { PreferencesSection } from "./sections/Preferences";
-import { CampusLifeSection } from "./sections/CampusLife";
 import { EssaySection } from "./sections/Essay";
 import {
   predictResponseSchema,
@@ -98,8 +97,6 @@ export function StudentForm() {
         <BackgroundSection />
         <div className="h-px w-full bg-border" />
         <PreferencesSection />
-        <div className="h-px w-full bg-border" />
-        <CampusLifeSection />
         <div className="h-px w-full bg-border" />
         <EssaySection
           pdfName={pdfName}

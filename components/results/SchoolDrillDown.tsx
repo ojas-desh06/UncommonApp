@@ -17,7 +17,7 @@ import {
   formatChanceRange,
   formatCurrency,
 } from "@/lib/utils";
-import { Check, ChevronsUp, Mic, X } from "lucide-react";
+import { Check, ChevronsUp, X } from "lucide-react";
 
 export function SchoolDrillDown({
   school,
@@ -129,17 +129,9 @@ export function SchoolDrillDown({
             />
           </motion.div>
 
-          <div className="flex flex-col-reverse gap-2 border-t border-border pt-4 sm:flex-row sm:justify-between">
+          <div className="border-t border-border pt-4">
             <Button variant="ghost" onClick={() => onOpenChange(false)}>
               Close
-            </Button>
-            <Button
-              onClick={() => {
-                console.log("Interview with Admissions Officer", college.id);
-              }}
-            >
-              <Mic className="size-4" />
-              Interview with Admissions Officer
             </Button>
           </div>
         </div>

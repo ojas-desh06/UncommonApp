@@ -10,7 +10,6 @@ import { ExperienceSection } from "./sections/Experience";
 import { GoalsSection } from "./sections/Goals";
 import { BackgroundAdultSection } from "./sections/BackgroundAdult";
 import { PreferencesAdultSection } from "./sections/PreferencesAdult";
-import { CampusLifeSection } from "./sections/CampusLife";
 import {
   adultLearnerProfileSchema,
   adultPredictResponseSchema,
@@ -90,8 +89,6 @@ export function AdultForm() {
         <BackgroundAdultSection />
         <div className="h-px w-full bg-border" />
         <PreferencesAdultSection />
-        <div className="h-px w-full bg-border" />
-        <CampusLifeSection step={6} />
 
         <div className="flex flex-col items-stretch gap-3 border-t border-border pt-8 sm:items-start">
           {submitError && (
