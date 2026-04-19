@@ -61,7 +61,11 @@ export function BackgroundSection() {
             control={control}
             name="school_type"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={Object.fromEntries(SCHOOL_TYPES.map((s) => [s.value, s.label]))}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>

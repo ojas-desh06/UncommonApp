@@ -60,7 +60,11 @@ export function AcademicsSection() {
             control={control}
             name="test_type"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{ SAT: "SAT", ACT: "ACT", test_optional: "Test optional" }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Pick one" />
                 </SelectTrigger>

@@ -32,7 +32,15 @@ export function GoalsSection() {
             control={control}
             name="degree_goal"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{
+                  start_bachelor: "Starting a bachelor's degree for the first time",
+                  complete_bachelor: "Completing a bachelor's I previously started",
+                  specific_program: "Enrolling in a specific professional program",
+                }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select one" />
                 </SelectTrigger>

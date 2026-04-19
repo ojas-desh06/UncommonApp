@@ -32,7 +32,11 @@ export function AcademicsAdultSection() {
             control={control}
             name="years_gap"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{ "2_5": "2–5 years", "5_10": "5–10 years", "10_20": "10–20 years", "20_plus": "20+ years" }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a range" />
                 </SelectTrigger>
@@ -76,7 +80,16 @@ export function AcademicsAdultSection() {
             control={control}
             name="prior_credits"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{
+                  none: "None",
+                  some: "Some (fewer than 30 credits)",
+                  substantial: "Substantial (30–60 credits)",
+                  nearly_done: "Nearly done (60+ credits)",
+                }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select one" />
                 </SelectTrigger>

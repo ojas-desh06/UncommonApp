@@ -50,7 +50,11 @@ export function PreferencesAdultSection() {
             control={control}
             name="schedule_preference"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{ full_time: "Full-time", part_time: "Part-time", either: "Either works" }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Pick one" />
                 </SelectTrigger>
@@ -69,7 +73,11 @@ export function PreferencesAdultSection() {
             control={control}
             name="format_preference"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{ in_person: "In-person", online: "Online", hybrid: "Hybrid", any: "No preference" }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Pick one" />
                 </SelectTrigger>
@@ -102,7 +110,7 @@ export function PreferencesAdultSection() {
                       key={r}
                       className={`cursor-pointer select-none rounded-lg border px-4 py-2 text-sm transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                         checked
-                          ? "border-primary bg-primary/10 text-primary shadow-[0_0_0_1px_var(--color-primary),0_4px_12px_-4px_var(--color-primary)]"
+                          ? "border-primary bg-primary/10 text-primary shadow-[0_4px_12px_-4px_var(--color-primary)]"
                           : "border-border text-foreground/80 hover:border-foreground/30 hover:bg-muted/60"
                       }`}
                     >
@@ -131,7 +139,16 @@ export function PreferencesAdultSection() {
             control={control}
             name="size_preference"
             render={({ field }) => (
-              <Select value={field.value} onValueChange={field.onChange}>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+                items={{
+                  small: "Small (< 3,000)",
+                  medium: "Medium (3,000–10,000)",
+                  large: "Large (> 10,000)",
+                  any: "No preference",
+                }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Pick one" />
                 </SelectTrigger>
