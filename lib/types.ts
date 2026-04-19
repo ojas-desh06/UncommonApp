@@ -58,24 +58,6 @@ export const classificationSchema = z.enum([
 ]);
 export type Classification = z.infer<typeof classificationSchema>;
 
-export const campusSettingSchema = z.enum(["city", "suburban", "rural", "any"]);
-export type CampusSetting = z.infer<typeof campusSettingSchema>;
-
-export const sportsCultureSchema = z.enum(["big_sports", "moderate", "not_important"]);
-export type SportsCulture = z.infer<typeof sportsCultureSchema>;
-
-export const greekLifeSchema = z.enum(["important", "nice_to_have", "not_interested"]);
-export type GreekLife = z.infer<typeof greekLifeSchema>;
-
-export const researchSchema = z.enum(["essential", "nice_to_have", "not_important"]);
-export type Research = z.infer<typeof researchSchema>;
-
-export const weatherSchema = z.enum(["warm", "cold", "four_seasons", "any"]);
-export type Weather = z.infer<typeof weatherSchema>;
-
-export const diversityImportanceSchema = z.enum(["very_important", "somewhat", "not_a_factor"]);
-export type DiversityImportance = z.infer<typeof diversityImportanceSchema>;
-
 export const studentProfileSchema = z.object({
   gpa_unweighted: z.number().min(0).max(5),
   gpa_weighted: z.number().min(0).max(5),
@@ -94,12 +76,6 @@ export const studentProfileSchema = z.object({
   region_preference: z.array(regionSchema).min(1),
   size_preference: sizePreferenceSchema,
   max_budget: z.number().min(0).max(120000),
-  campus_setting: campusSettingSchema.default("any"),
-  sports_culture: sportsCultureSchema.default("moderate"),
-  greek_life: greekLifeSchema.default("nice_to_have"),
-  research: researchSchema.default("nice_to_have"),
-  weather: weatherSchema.default("any"),
-  diversity: diversityImportanceSchema.default("somewhat"),
   essay: z.string().max(3500),
 }).superRefine((val, ctx) => {
   if (val.test_type === "test_optional") {
@@ -162,19 +138,12 @@ export const collegeSchema = z.object({
   has_merit_aid: z.boolean(),
   top_majors: z.array(z.string()),
   cds_factors: cdsFactorsSchema,
-  campus_setting: z.enum(["city", "suburban", "rural"]),
-  greek_life: z.enum(["strong", "moderate", "minimal"]),
-  sports_tier: z.enum(["d1_powerhouse", "d1", "d3", "minimal"]),
-  research_intensity: z.enum(["high", "moderate", "low"]),
-  climate: z.enum(["warm", "four_seasons", "cold"]),
-  diversity_rating: z.enum(["high", "moderate", "low"]),
 });
 export type College = z.infer<typeof collegeSchema>;
 
 export const schoolPredictionSchema = z.object({
   college: collegeSchema,
   classification: classificationSchema,
-  campus_fit: z.number().min(0).max(1),
   chance_low: z.number().min(0).max(1),
   chance_high: z.number().min(0).max(1),
   working_for: z.array(z.string()).length(3),
@@ -243,12 +212,6 @@ export const adultLearnerProfileSchema = z.object({
   region_preference: z.array(regionSchema).min(1),
   size_preference: sizePreferenceSchema,
   max_budget: z.number().min(0).max(120000),
-  campus_setting: campusSettingSchema.default("any"),
-  sports_culture: sportsCultureSchema.default("moderate"),
-  greek_life: greekLifeSchema.default("nice_to_have"),
-  research: researchSchema.default("nice_to_have"),
-  weather: weatherSchema.default("any"),
-  diversity: diversityImportanceSchema.default("somewhat"),
 });
 export type AdultLearnerProfile = z.infer<typeof adultLearnerProfileSchema>;
 

@@ -100,10 +100,10 @@ export function PreferencesAdultSection() {
                   return (
                     <label
                       key={r}
-                      className={`cursor-pointer rounded-lg border px-3 py-1.5 text-sm transition-colors ${
+                      className={`cursor-pointer select-none rounded-lg border px-4 py-2 text-sm transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                         checked
-                          ? "border-primary bg-primary/10 text-primary"
-                          : "border-border text-foreground/80 hover:bg-muted"
+                          ? "border-primary bg-primary/10 text-primary shadow-[0_0_0_1px_var(--color-primary),0_4px_12px_-4px_var(--color-primary)]"
+                          : "border-border text-foreground/80 hover:border-foreground/30 hover:bg-muted/60"
                       }`}
                     >
                       <Checkbox

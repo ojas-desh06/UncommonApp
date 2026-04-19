@@ -47,13 +47,7 @@ export function SchoolCard({
         </div>
       </div>
 
-      <div className="relative flex items-center gap-3">
-        {school.campus_fit < 0.5 && (
-          <span className="hidden text-[10px] text-muted-foreground sm:block">low fit</span>
-        )}
-        {school.campus_fit >= 0.75 && (
-          <span className="hidden text-[10px] sm:block" style={{ color: "var(--safety)" }}>great fit</span>
-        )}
+      <div className="relative flex items-center gap-2">
         <span className="text-sm font-semibold tabular-nums" style={{ color }}>
           {formatPercent(midpoint)}
         </span>

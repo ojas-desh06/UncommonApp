@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AcademicsAdultSection } from "./sections/AcademicsAdult";
 import { ExperienceSection } from "./sections/Experience";
 import { GoalsSection } from "./sections/Goals";
 import { BackgroundAdultSection } from "./sections/BackgroundAdult";
 import { PreferencesAdultSection } from "./sections/PreferencesAdult";
-import { CampusLifeSection } from "./sections/CampusLife";
 import {
   adultLearnerProfileSchema,
   adultPredictResponseSchema,
@@ -35,12 +35,6 @@ const DEFAULTS: AdultLearnerProfile = {
   region_preference: ["Any"],
   size_preference: "any",
   max_budget: 40000,
-  campus_setting: "any",
-  sports_culture: "moderate",
-  greek_life: "nice_to_have",
-  research: "nice_to_have",
-  weather: "any",
-  diversity: "somewhat",
 };
 
 export function AdultForm() {
@@ -90,8 +84,6 @@ export function AdultForm() {
         <BackgroundAdultSection />
         <div className="h-px w-full bg-border" />
         <PreferencesAdultSection />
-        <div className="h-px w-full bg-border" />
-        <CampusLifeSection step={6} />
 
         <div className="flex flex-col items-stretch gap-3 border-t border-border pt-8 sm:items-start">
           {submitError && (
@@ -103,7 +95,14 @@ export function AdultForm() {
             className="w-full sm:w-auto sm:min-w-48"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Running the committee…" : "Get my verdict"}
+            {isSubmitting ? (
+              <>
+                <Loader2 className="size-4 animate-spin" />
+                Running the committee…
+              </>
+            ) : (
+              "Get my verdict"
+            )}
           </Button>
           <p className="text-xs text-muted-foreground">
             By submitting, you agree we may use your (anonymized) profile to improve our model.

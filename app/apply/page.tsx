@@ -10,8 +10,8 @@ export const metadata = {
 
 type SearchParams = Promise<{ path?: string }>;
 
-const STUDENT_STEPS = ["Academics", "Activities", "Awards", "Background", "Preferences", "Campus Life", "Essay"];
-const ADULT_STEPS = ["Academics", "Experience", "Goals", "Background", "Preferences", "Campus Life"];
+const STUDENT_STEPS = ["Academics", "Activities", "Awards", "Background", "Preferences", "Essay"];
+const ADULT_STEPS = ["Academics", "Experience", "Goals", "Background", "Preferences"];
 
 export default async function ApplyPage({
   searchParams,

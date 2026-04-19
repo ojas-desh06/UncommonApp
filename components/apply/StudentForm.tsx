@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AcademicsSection } from "./sections/Academics";
 import { ActivitiesSection } from "./sections/Activities";
 import { AwardsSection } from "./sections/Awards";
 import { BackgroundSection } from "./sections/Background";
 import { PreferencesSection } from "./sections/Preferences";
-import { CampusLifeSection } from "./sections/CampusLife";
 import { EssaySection } from "./sections/Essay";
 import {
   predictResponseSchema,
@@ -36,12 +36,6 @@ const DEFAULTS: StudentProfile = {
   region_preference: ["Any"],
   size_preference: "any",
   max_budget: 60000,
-  campus_setting: "any",
-  sports_culture: "moderate",
-  greek_life: "nice_to_have",
-  research: "nice_to_have",
-  weather: "any",
-  diversity: "somewhat",
   essay: "",
 };
 
@@ -99,8 +93,6 @@ export function StudentForm() {
         <div className="h-px w-full bg-border" />
         <PreferencesSection />
         <div className="h-px w-full bg-border" />
-        <CampusLifeSection />
-        <div className="h-px w-full bg-border" />
         <EssaySection
           pdfName={pdfName}
           onPdfChange={(base64, name) => { setPdfBase64(base64); setPdfName(name); }}
@@ -117,7 +109,14 @@ export function StudentForm() {
             className="w-full sm:w-auto sm:min-w-48"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Running the committee…" : "Get my verdict"}
+            {isSubmitting ? (
+              <>
+                <Loader2 className="size-4 animate-spin" />
+                Running the committee…
+              </>
+            ) : (
+              "Get my verdict"
+            )}
           </Button>
           <p className="text-xs text-muted-foreground">
             By submitting, you agree we may use your (anonymized) profile to improve our model.

@@ -16,7 +16,7 @@ export function ActivitiesSection() {
       <SectionHeader
         step={2}
         title="Activities"
-        blurb="Five one-liners. What did you do, for how long, and to what end? Be specific."
+        blurb="Up to ten one-liners. What did you do, for how long, and to what end? Be specific."
       />
       <div className="flex flex-col gap-4">
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
