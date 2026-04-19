@@ -425,14 +425,41 @@ export async function generatePrediction(
 
   const selected = pickSpread(scored).map(s => ({ ...s, classification: classify(s.chance) }));
 
-  const narratives = await generateNarratives(student, selected, essay);
+  // ── ML layer: blend rule-based score with per-school model when available ──
+  const sat = toSat(student);
+  const gpa = Math.max(student.gpa_unweighted, student.gpa_weighted - 0.5);
+
+  const withMl = await Promise.all(selected.map(async s => {
+    try {
+      const res = await fetch("http://localhost:8001/ml-predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          school: s.college.name,
+          gpa,
+          sat: sat ?? 1100,
+          first_gen: student.first_gen,
+        }),
+        signal: AbortSignal.timeout(2000),
+      }).then(r => r.json()) as { ml_available: boolean; ml_chance?: number; n_training_samples?: number };
+
+      if (res.ml_available && res.ml_chance != null) {
+        // 60% rule-based + 40% ML
+        const blended = s.chance * 0.6 + res.ml_chance * 0.4;
+        return { ...s, chance: clamp(blended), ml_chance: res.ml_chance, ml_samples: res.n_training_samples };
+      }
+    } catch { /* ML server not available, use rule-based only */ }
+    return { ...s, ml_chance: null, ml_samples: null };
+  }));
+
+  const narratives = await generateNarratives(student, withMl, essay);
   const byId = new Map(narratives.schools.map(n => [n.college_id, n]));
 
-  const schools: SchoolPrediction[] = selected.map(s => {
+  const schools: SchoolPrediction[] = withMl.map(s => {
     const n = byId.get(s.college.id);
     return {
       college: s.college,
-      classification: s.classification,
+      classification: classify(s.chance),
       chance_low: clamp(s.chance - 0.08, 0.01, 0.93),
       chance_high: clamp(s.chance + 0.08, 0.02, 0.95),
       working_for: (n?.working_for ?? [
