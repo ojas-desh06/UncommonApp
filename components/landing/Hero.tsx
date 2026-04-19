@@ -9,13 +9,6 @@ export function Hero() {
         <ThemeToggle />
       </div>
       <div className="flex flex-1 items-center">
-      {/* Background glows */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="animate-pulse-glow absolute -top-20 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/12 blur-[120px]" />
-        <div className="animate-pulse-glow absolute bottom-0 right-1/4 h-[350px] w-[350px] rounded-full bg-[oklch(0.80_0.20_232)]/8 blur-[100px]" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[80px]" />
-      </div>
-
       <div className="relative z-10 flex w-full flex-col gap-16 lg:flex-row lg:items-center lg:gap-24">
         {/* Left: copy */}
         <div className="flex flex-col lg:flex-1">
@@ -60,7 +53,7 @@ export function Hero() {
         <div className="flex flex-col gap-4 lg:w-80">
           <Link
             href="/apply?path=recent"
-            className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all duration-200 hover:border-[var(--safety)]/50 hover:shadow-[0_0_30px_-8px_var(--safety)]"
+            className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[var(--safety)]/50 hover:shadow-[0_20px_40px_-15px_var(--safety),0_0_30px_-8px_var(--safety)]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--safety)]/0 to-[var(--safety)]/0 transition-all duration-300 group-hover:from-[var(--safety)]/5 group-hover:to-transparent" />
             <span className="relative text-xs uppercase tracking-[0.15em] text-[var(--safety)]">
@@ -77,7 +70,7 @@ export function Hero() {
 
           <Link
             href="/apply?path=returning"
-            className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all duration-200 hover:border-[var(--target)]/50 hover:shadow-[0_0_30px_-8px_var(--target)]"
+            className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-border bg-card p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[var(--target)]/50 hover:shadow-[0_20px_40px_-15px_var(--target),0_0_30px_-8px_var(--target)]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--target)]/0 to-[var(--target)]/0 transition-all duration-300 group-hover:from-[var(--target)]/5 group-hover:to-transparent" />
             <span className="relative text-xs uppercase tracking-[0.15em] text-[var(--target)]">

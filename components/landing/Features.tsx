@@ -57,7 +57,7 @@ export function Features() {
             <button
               key={title}
               type="button"
-              className="group cursor-pointer rounded-xl border border-border/60 bg-card p-6 text-left transition-colors hover:border-primary/40 hover:bg-card/80"
+              className="group cursor-pointer rounded-xl border border-border/60 bg-card p-6 text-left transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-primary/40 hover:bg-card/80 hover:shadow-[0_20px_40px_-15px_oklch(0_0_0/0.5)]"
             >
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-2.5 text-primary transition-colors group-hover:bg-primary/20">
                 <Icon className="size-5" />
