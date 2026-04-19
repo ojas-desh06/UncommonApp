@@ -9,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { Field, SectionHeader } from "../Field";
 import type { Region, StudentProfile } from "@/lib/types";
@@ -59,27 +58,25 @@ export function PreferencesSection() {
                 {REGIONS.map((r) => {
                   const checked = field.value.includes(r);
                   return (
-                    <label
+                    <button
                       key={r}
-                      className={`cursor-pointer select-none rounded-lg border px-4 py-2 text-sm transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
+                      type="button"
+                      role="checkbox"
+                      aria-checked={checked}
+                      onClick={() => {
+                        const next = checked
+                          ? field.value.filter((x) => x !== r)
+                          : Array.from(new Set([...field.value, r]));
+                        field.onChange(next);
+                      }}
+                      className={`inline-flex h-10 w-28 cursor-pointer select-none items-center justify-center rounded-lg border text-center text-sm transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                         checked
                           ? "border-primary bg-primary/10 text-primary shadow-[0_4px_12px_-4px_var(--color-primary)]"
                           : "border-border text-foreground/80 hover:border-foreground/30 hover:bg-muted/60"
                       }`}
                     >
-                      <Checkbox
-                        checked={checked}
-                        onCheckedChange={(v) => {
-                          const on = Boolean(v);
-                          const next = on
-                            ? Array.from(new Set([...field.value, r]))
-                            : field.value.filter((x) => x !== r);
-                          field.onChange(next);
-                        }}
-                        className="sr-only"
-                      />
                       {r}
-                    </label>
+                    </button>
                   );
                 })}
               </div>
